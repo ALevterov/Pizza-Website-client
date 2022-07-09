@@ -1,7 +1,7 @@
 import PizzaOptionsBlock from './pizzaOptionsBlock'
 
-const PizzaCard = ({ title, description, image, sizes }) => {
-  console.log({ title, description, image, sizes })
+const PizzaCard = ({ title, description, image, sizes, dough, _id }) => {
+  console.log({ dough, _id })
   return (
     <div className='col-lg-3 col-md-4 col-sm-6'>
       <div className='card border-0' style={{ width: '90%', height: '100%' }}>
@@ -12,7 +12,7 @@ const PizzaCard = ({ title, description, image, sizes }) => {
             <h5 className='card-title fs-5 roboto-sb'>{title}</h5>
             <p className='card-text roboto-l fs-09'>{description}</p>
           </div>
-          <PizzaOptionsBlock />
+          <PizzaOptionsBlock sizes={sizes} dough={dough} id={_id} />
         </div>
       </div>
     </div>

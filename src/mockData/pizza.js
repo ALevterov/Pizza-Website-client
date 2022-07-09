@@ -18,12 +18,17 @@ export const pizza = [
         weigth: '500',
         diametr: '30',
         price: '539',
+        selected: true,
       },
       large: {
         weigth: '670',
         diametr: '35',
         price: '649',
       },
+    },
+    dough: {
+      thin: { selected: true },
+      thick: { selected: false },
     },
   },
   {
@@ -41,12 +46,17 @@ export const pizza = [
         weigth: '490',
         diametr: '30',
         price: '669',
+        selected: true,
       },
       large: {
         weigth: '620',
         diametr: '35',
         price: '829',
       },
+    },
+    dough: {
+      thin: { selected: true },
+      thick: { selected: false },
     },
   },
   {
@@ -65,12 +75,17 @@ export const pizza = [
         weigth: '670',
         diametr: '30',
         price: '739',
+        selected: true,
       },
       large: {
         weigth: '920',
         diametr: '35',
         price: '889',
       },
+    },
+    dough: {
+      thin: { selected: true },
+      thick: { selected: false },
     },
   },
   {
@@ -89,12 +104,17 @@ export const pizza = [
         weigth: '610',
         diametr: '30',
         price: '739',
+        selected: true,
       },
       large: {
         weigth: '830',
         diametr: '35',
         price: '889',
       },
+    },
+    dough: {
+      thin: { selected: true },
+      thick: { selected: false },
     },
   },
 ]

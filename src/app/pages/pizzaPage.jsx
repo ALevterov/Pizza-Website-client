@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import pizzaApi from '../../mockData/pizza'
 import PizzaCard from '../components/pizza/pizzaCard'
+import {
+  fetchAllPizza,
+  getAllPizza,
+  getPizzaLoadingState,
+} from '../store/pizza'
 const PizzaPage = () => {
-  const [pizza, setPizza] = useState()
-  const [isLoadingPizza, setisLoadingPizza] = useState(true)
+  const isLoadingPizza = useSelector(getPizzaLoadingState())
+  const pizza = useSelector(getAllPizza())
+  console.log(isLoadingPizza)
+  console.log(pizza)
+  const dispatch = useDispatch()
   useEffect(() => {
-    async function fetchAllPizza() {
-      const data = await pizzaApi.fetchAll()
-      setPizza(data)
-      setisLoadingPizza(false)
-    }
-    fetchAllPizza()
+    dispatch(fetchAllPizza())
   }, [])
   return (
     <>

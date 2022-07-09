@@ -3,6 +3,7 @@
   background-color: transparent;
   border-radius: 5px;
   border: none;
+  margin-left: 0.4rem;
 }
 .product-btn.active {
   background-color: #fff;
