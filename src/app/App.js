@@ -1,14 +1,20 @@
-import Navbar from './components/navbar'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import './App.css'
+import Navbar from './components/common/navbar'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import PizzaPage from './pages/pizzaPage'
+import DrinksPage from './pages/drinksPage'
+import DessertPage from './pages/dessertPage'
+import MainPage from './pages/mainPage'
 function App() {
   return (
     <>
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Routes>
-          <Route path='/pizza'></Route>
-          <Route path='/drinks'></Route>
-          <Route path='/desserts'></Route>
+          <Route path='/' element={<MainPage />}></Route>
+          <Route path='/pizza' element={<PizzaPage />}></Route>
+          <Route path='/drinks' element={<DrinksPage />}></Route>
+          <Route path='/desserts' element={<DessertPage />}></Route>
         </Routes>
       </BrowserRouter>
     </>

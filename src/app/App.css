@@ -1,0 +1,29 @@
+@import url('../styles/buttons.css');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+.roboto-l {
+  font-weight: 300;
+}
+.roboto-r {
+  font-weight: 400;
+}
+.roboto-sb {
+  font-weight: 500;
+}
+.roboto-b {
+  font-weight: 700;
+}
+.fs-08 {
+  font-size: 0.8rem;
+}
+.fs-09 {
+  font-size: 0.9rem;
+}
+.p-02 {
+  padding: 0.2rem;
+}
+.p-04 {
+  padding: 0.4rem;
+}

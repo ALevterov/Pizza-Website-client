@@ -1,0 +1,10 @@
+.product-btn {
+  outline: none;
+  background-color: transparent;
+  border-radius: 5px;
+  border: none;
+}
+.product-btn.active {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+}
