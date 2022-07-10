@@ -29,9 +29,7 @@ const pizzaSlice = createSlice({
       })
     },
     pizzaCountChanged: (state, action) => {
-      console.log(action.payload)
       state.enteties = state.enteties.map(p => {
-        console.log(action.payload)
         if (p._id === action.payload._id) {
           return { ...p, count: action.payload.count }
         } else {
@@ -69,4 +67,6 @@ export const selectPizza = payload => async dispatch =>
 export const changePizzaCount = payload => dispatch =>
   dispatch(pizzaCountChanged(payload))
 
+export const getPizzaById = id => state =>
+  state.pizza.enteties.find(p => p._id === id)
 export default pizzaReducer

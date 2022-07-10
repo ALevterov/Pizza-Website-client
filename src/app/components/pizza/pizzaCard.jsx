@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { changePizzaCount } from '../../store/pizza'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addProductToBasket, getTotalProductCount } from '../../store/basket'
+import { getPizzaById } from '../../store/pizza'
 import PizzaOptionsBlock from './pizzaOptionsBlock'
 
 const PizzaCard = ({
@@ -11,12 +12,16 @@ const PizzaCard = ({
   dough,
   _id,
   selected,
-  count,
 }) => {
   const dispatch = useDispatch()
+  const pizza = useSelector(getPizzaById(_id))
+  const [count, setCount] = useState(useSelector(getTotalProductCount()))
+
   const handleAdd = () => {
-    dispatch(changePizzaCount({ _id: _id, count: count + 1 }))
+    dispatch(addProductToBasket({ ...pizza, count: 1 }))
+    setCount(count + 1)
   }
+
   return (
     <div className='col-lg-3 col-md-4 col-sm-6'>
       <div className='card border-0' style={{ width: '90%', height: '100%' }}>

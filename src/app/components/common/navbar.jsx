@@ -1,7 +1,23 @@
 import { NavLink } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import basket from '../../assets/basket.svg'
+import { useSelector } from 'react-redux'
+import {
+  getProductsCountFromBasket,
+  getProductsFromBasket,
+} from '../../store/basket'
+import { getAllPizza, getPizzaById } from '../../store/pizza'
 const Navbar = () => {
+  // const countOfProducts = useSelector(getProductsCountFromBasket())
+  // const products = useSelector(getProductsFromBasket())
+  // const allPizza = useSelector(getAllPizza())
+  // const pizzaInBasket = allPizza.filter(p => products.contain(p._id))
+  // console.log(pizzaInBasket)
+  // const getTotalPrice = () => {
+  //   return pizzaInBasket.reduce((totalPrice, p)=> {
+  // 		p
+  // 	})
+  // }
   return (
     <nav className='navbar navbar-expand-lg bg-light'>
       <div className='container-fluid'>

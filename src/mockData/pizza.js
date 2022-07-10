@@ -8,10 +8,12 @@ import {
   PIZZA_LARGE_SIZE,
   PIZZA_MEDIUM_SIZE,
   PIZZA_SMALL_SIZE,
+  PRODUCT_PIZZA,
 } from '../app/utils/consts'
 export const pizza = [
   {
     _id: '1',
+    type: PRODUCT_PIZZA,
     title: 'Ветчина и сыр',
     description: 'Ветчина, моцарелла, соус альфредо',
     image: hamAndCheese,
@@ -40,10 +42,10 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
-    count: 0,
   },
   {
     _id: '2',
+    type: PRODUCT_PIZZA,
     title: 'Белая пепперони',
     description: 'Пикантная пепперони, соус альфредо, моцарелла',
     image: whitePepperoni,
@@ -72,10 +74,10 @@ export const pizza = [
       size: PIZZA_SMALL_SIZE,
       dough: DOUGH_THIN,
     },
-    count: 0,
   },
   {
     _id: '3',
+    type: PRODUCT_PIZZA,
     title: 'Цыпленок барбекю',
     description:
       'Цыпленок, бекон, соус барбекю, красный лук, моцарелла, томатный соус',
@@ -105,10 +107,10 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
-    count: 0,
   },
   {
     _id: '4',
+    type: PRODUCT_PIZZA,
     title: 'Мясная',
     description:
       'Цыпленок, ветчина, пикантная пепперони, острая чоризо, моцарелла, томатный соус',
@@ -139,7 +141,6 @@ export const pizza = [
       size: PIZZA_LARGE_SIZE,
       dough: DOUGH_THICK,
     },
-    count: 0,
   },
 ]
 
