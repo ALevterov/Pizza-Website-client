@@ -1,0 +1,14 @@
+:root {
+  --accent-color: #fe6020;
+}
+
+.price {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.navbar__svg {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}

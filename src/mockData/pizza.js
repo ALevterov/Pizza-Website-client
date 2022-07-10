@@ -40,6 +40,7 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
+    count: 0,
   },
   {
     _id: '2',
@@ -71,6 +72,7 @@ export const pizza = [
       size: PIZZA_SMALL_SIZE,
       dough: DOUGH_THIN,
     },
+    count: 0,
   },
   {
     _id: '3',
@@ -103,6 +105,7 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
+    count: 0,
   },
   {
     _id: '4',
@@ -136,6 +139,7 @@ export const pizza = [
       size: PIZZA_LARGE_SIZE,
       dough: DOUGH_THICK,
     },
+    count: 0,
   },
 ]
 

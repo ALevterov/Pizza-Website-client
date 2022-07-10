@@ -8,8 +8,6 @@ import {
 import ProductButton from '../productButton'
 
 const PizzaOptionsBlock = ({ dough, sizes, _id, selected }) => {
-  // console.log({ dough, sizes, _id, selected })
-  console.log('ID!', _id)
   return (
     <div
       className='d-flex flex-column mt-3'

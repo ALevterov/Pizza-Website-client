@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { updatePizza } from '../store/pizza'
+import { selectPizza } from '../store/pizza'
 
 const ProductButton = ({
   text,
@@ -10,8 +10,6 @@ const ProductButton = ({
   selected,
   _id,
 }) => {
-  // console.log({ text, dough, type, sizes, size, selected })
-  // console.log('ID!!!: ', _id)
   const classes = ['flex-grow-1', 'product-btn']
   const dispatch = useDispatch()
 
@@ -20,7 +18,7 @@ const ProductButton = ({
       size: size || selected.size,
       dough: type || selected.dough,
     }
-    dispatch(updatePizza({ selected: newSelected, _id }))
+    dispatch(selectPizza({ selected: newSelected, _id }))
   }
 
   if (dough) {
