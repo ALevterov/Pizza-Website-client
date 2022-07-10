@@ -2,6 +2,13 @@ import hamAndCheese from '../app/assets/hamAndCheese.jpeg'
 import barbecueChicken from '../app/assets/barbecueChicken.jpeg'
 import meaty from '../app/assets/meaty.jpeg'
 import whitePepperoni from '../app/assets/whitePepperoni.jpeg'
+import {
+  DOUGH_THICK,
+  DOUGH_THIN,
+  PIZZA_LARGE_SIZE,
+  PIZZA_MEDIUM_SIZE,
+  PIZZA_SMALL_SIZE,
+} from '../app/utils/consts'
 export const pizza = [
   {
     _id: '1',
@@ -18,7 +25,6 @@ export const pizza = [
         weigth: '500',
         diametr: '30',
         price: '539',
-        selected: true,
       },
       large: {
         weigth: '670',
@@ -27,8 +33,12 @@ export const pizza = [
       },
     },
     dough: {
-      thin: { selected: true },
-      thick: { selected: false },
+      thin: DOUGH_THIN,
+      thick: DOUGH_THICK,
+    },
+    selected: {
+      size: PIZZA_MEDIUM_SIZE,
+      dough: DOUGH_THIN,
     },
   },
   {
@@ -46,7 +56,6 @@ export const pizza = [
         weigth: '490',
         diametr: '30',
         price: '669',
-        selected: true,
       },
       large: {
         weigth: '620',
@@ -55,8 +64,12 @@ export const pizza = [
       },
     },
     dough: {
-      thin: { selected: true },
-      thick: { selected: false },
+      thin: DOUGH_THIN,
+      thick: DOUGH_THICK,
+    },
+    selected: {
+      size: PIZZA_SMALL_SIZE,
+      dough: DOUGH_THIN,
     },
   },
   {
@@ -75,7 +88,6 @@ export const pizza = [
         weigth: '670',
         diametr: '30',
         price: '739',
-        selected: true,
       },
       large: {
         weigth: '920',
@@ -84,8 +96,12 @@ export const pizza = [
       },
     },
     dough: {
-      thin: { selected: true },
-      thick: { selected: false },
+      thin: DOUGH_THIN,
+      thick: DOUGH_THICK,
+    },
+    selected: {
+      size: PIZZA_MEDIUM_SIZE,
+      dough: DOUGH_THIN,
     },
   },
   {
@@ -113,8 +129,12 @@ export const pizza = [
       },
     },
     dough: {
-      thin: { selected: true },
-      thick: { selected: false },
+      thin: DOUGH_THIN,
+      thick: DOUGH_THICK,
+    },
+    selected: {
+      size: PIZZA_LARGE_SIZE,
+      dough: DOUGH_THICK,
     },
   },
 ]

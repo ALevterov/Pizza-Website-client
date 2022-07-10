@@ -19,14 +19,24 @@ const pizzaSlice = createSlice({
       state.error = action.payload
       state.isLoading = false
     },
+    pizzaUpdated: (state, action) => {
+      console.log(action.payload)
+      state.enteties = state.enteties.map(p => {
+        if (p._id === action.payload._id) {
+          return { ...p, selected: action.payload.selected }
+        } else {
+          return p
+        }
+      })
+      state.isLoading = false
+    },
   },
 })
 
 const { reducer: pizzaReducer, actions } = pizzaSlice
-const { pizzaRequested, pizzaRecieved, pizzaRequestFailed } = actions
+const { pizzaRequested, pizzaRecieved, pizzaRequestFailed, pizzaUpdated } =
+  actions
 export const fetchAllPizza = () => async dispatch => {
-  console.log('hello')
-  console.log(dispatch)
   dispatch(pizzaRequested())
   try {
     const data = await pizzaApi.fetchAll()
@@ -39,4 +49,13 @@ export const fetchAllPizza = () => async dispatch => {
 export const getPizzaLoadingState = () => state => state.pizza.isLoading
 export const getAllPizza = () => state => state.pizza.enteties
 
+export const updatePizza = payload => async dispatch => {
+  dispatch(pizzaRequested())
+  try {
+    dispatch(pizzaUpdated(payload))
+  } catch (error) {
+    dispatch(pizzaRequestFailed(error.message))
+    console.log(error.message)
+  }
+}
 export default pizzaReducer

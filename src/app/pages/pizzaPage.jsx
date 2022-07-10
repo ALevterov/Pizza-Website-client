@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import pizzaApi from '../../mockData/pizza'
 import PizzaCard from '../components/pizza/pizzaCard'
 import {
   fetchAllPizza,
@@ -10,8 +9,6 @@ import {
 const PizzaPage = () => {
   const isLoadingPizza = useSelector(getPizzaLoadingState())
   const pizza = useSelector(getAllPizza())
-  console.log(isLoadingPizza)
-  console.log(pizza)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchAllPizza())
