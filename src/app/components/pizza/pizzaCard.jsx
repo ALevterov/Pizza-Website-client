@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addProductToBasket, getTotalProductCount } from '../../store/basket'
+import { addProductToBasket, getProductCount } from '../../store/basket'
 import { getPizzaById } from '../../store/pizza'
 import PizzaOptionsBlock from './pizzaOptionsBlock'
 
@@ -15,11 +14,10 @@ const PizzaCard = ({
 }) => {
   const dispatch = useDispatch()
   const pizza = useSelector(getPizzaById(_id))
-  const [count, setCount] = useState(useSelector(getTotalProductCount()))
+  const count = useSelector(getProductCount(_id))
 
   const handleAdd = () => {
     dispatch(addProductToBasket({ ...pizza, count: 1 }))
-    setCount(count + 1)
   }
 
   return (

@@ -3,6 +3,7 @@ import pizzaApi from '../../mockData/pizza'
 const initialState = {
   enteties: [],
   isLoading: true,
+  dataLoaded: false,
 }
 const pizzaSlice = createSlice({
   name: 'pizza',
@@ -14,6 +15,7 @@ const pizzaSlice = createSlice({
     pizzaRecieved: (state, action) => {
       state.enteties = action.payload
       state.isLoading = false
+      state.dataLoaded = true
     },
     pizzaRequestFailed: (state, action) => {
       state.error = action.payload
@@ -69,4 +71,6 @@ export const changePizzaCount = payload => dispatch =>
 
 export const getPizzaById = id => state =>
   state.pizza.enteties.find(p => p._id === id)
+
+export const pizzaLoadedStatus = () => state => state.pizza.dataLoaded
 export default pizzaReducer

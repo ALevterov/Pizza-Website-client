@@ -36,3 +36,12 @@
   color: #fff;
   margin: 0 0.2rem;
 }
+.navbar__basket-button {
+  display: flex;
+  background-color: var(--accent-color);
+  border-radius: 30px;
+  color: #fff;
+  font-weight: 500;
+  padding: 12px 24px;
+  align-items: center;
+}

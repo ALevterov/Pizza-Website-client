@@ -1,23 +1,11 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import logo from '../../assets/logo.png'
-import basket from '../../assets/basket.svg'
 import { useSelector } from 'react-redux'
-import {
-  getProductsCountFromBasket,
-  getProductsFromBasket,
-} from '../../store/basket'
-import { getAllPizza, getPizzaById } from '../../store/pizza'
+import { getAllBasketProductsCount, getTotalPrice } from '../../store/basket'
 const Navbar = () => {
-  // const countOfProducts = useSelector(getProductsCountFromBasket())
-  // const products = useSelector(getProductsFromBasket())
-  // const allPizza = useSelector(getAllPizza())
-  // const pizzaInBasket = allPizza.filter(p => products.contain(p._id))
-  // console.log(pizzaInBasket)
-  // const getTotalPrice = () => {
-  //   return pizzaInBasket.reduce((totalPrice, p)=> {
-  // 		p
-  // 	})
-  // }
+  const totalProductsCount = useSelector(getAllBasketProductsCount())
+  const totalPrice = useSelector(getTotalPrice())
+  const navigate = useNavigate()
   return (
     <nav className='navbar navbar-expand-lg bg-light'>
       <div className='container-fluid'>
@@ -54,28 +42,26 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
-          <button
+          <div
             className='navbar__basket-button'
             type='submit'
-            style={{ backgroundColor: 'orange' }}
+            onClick={() => navigate('/basket')}
           >
-            <div>{'1239 ₽'}</div>
+            <div>{`${totalPrice} ₽`}</div>
             <div className='navbar__svg'>
               <svg
-                version='1.1'
-                viewBox='0 0 512 512'
                 xmlns='http://www.w3.org/2000/svg'
+                width='16'
+                height='16'
+                fill='#fff'
+                className='bi bi-cart2'
+                viewBox='0 0 16 16'
               >
-                <g fill='#fff' data-name='1'>
-                  <path d='M397.78,316H192.65A15,15,0,0,1,178,304.33L143.46,153.85a15,15,0,0,1,14.62-18.36H432.35A15,15,0,0,1,447,153.85L412.4,304.33A15,15,0,0,1,397.78,316ZM204.59,286H385.84l27.67-120.48H176.91Z' />
-                  <path d='M222,450a57.48,57.48,0,1,1,57.48-57.48A57.54,57.54,0,0,1,222,450Zm0-84.95a27.48,27.48,0,1,0,27.48,27.47A27.5,27.5,0,0,0,222,365.05Z' />
-                  <path d='m368.42 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1-57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0-27.48-27.47z' />
-                  <path d='M158.08,165.49a15,15,0,0,1-14.23-10.26L118.14,78H70.7a15,15,0,1,1,0-30H129a15,15,0,0,1,14.23,10.26l29.13,87.49a15,15,0,0,1-14.23,19.74Z' />
-                </g>
-              </svg>{' '}
-              {' 5'}
+                <path d='M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z' />
+              </svg>
             </div>
-          </button>
+            {totalProductsCount !== 0 && totalProductsCount}
+          </div>
         </div>
       </div>
     </nav>
