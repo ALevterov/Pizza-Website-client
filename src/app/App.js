@@ -5,13 +5,17 @@ import PizzaPage from './pages/pizzaPage'
 import DrinksPage from './pages/drinksPage'
 import DessertPage from './pages/dessertPage'
 import MainPage from './pages/mainPage'
-import BasketPage from './pages/basketPage'
 import PizzaLoader from './components/hoc/pizzaLoader'
+import Basket from './components/basket/basket'
+import { useState } from 'react'
+
 function App() {
+  const [modalActive, setModalActive] = useState(false)
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <Basket active={modalActive} setActive={setModalActive} />
+        <Navbar setActive={setModalActive} />
         <Routes>
           <Route path='/' element={<MainPage />}></Route>
           <Route
@@ -24,7 +28,6 @@ function App() {
           ></Route>
           <Route path='/drinks' element={<DrinksPage />}></Route>
           <Route path='/desserts' element={<DessertPage />}></Route>
-          <Route path='/basket' element={<BasketPage />}></Route>
           <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
       </BrowserRouter>

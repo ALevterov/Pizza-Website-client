@@ -1,11 +1,10 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import { useSelector } from 'react-redux'
 import { getAllBasketProductsCount, getTotalPrice } from '../../store/basket'
-const Navbar = () => {
+const Navbar = ({ setActive }) => {
   const totalProductsCount = useSelector(getAllBasketProductsCount())
   const totalPrice = useSelector(getTotalPrice())
-  const navigate = useNavigate()
   return (
     <nav className='navbar navbar-expand-lg bg-light'>
       <div className='container-fluid'>
@@ -45,7 +44,7 @@ const Navbar = () => {
           <div
             className='navbar__basket-button'
             type='submit'
-            onClick={() => navigate('/basket')}
+            onClick={() => setActive(true)}
           >
             <div>{`${totalPrice} ₽`}</div>
             <div className='navbar__svg'>

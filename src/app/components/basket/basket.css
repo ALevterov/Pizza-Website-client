@@ -1,0 +1,40 @@
+.modal-window {
+  display: flex;
+  position: relative;
+  z-index: 1000;
+  background: transparent;
+}
+.modal-shade {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s ease-out 0s;
+}
+.none {
+  display: none;
+}
+
+.modal-shade.active {
+  transition: all 0.3s ease-out 0s;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.64) none repeat scroll 0% 0%;
+}
+
+.modal-basket {
+  transition: all 0.3s ease-out 0s;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -600px;
+  width: 500px;
+  background-color: #fff;
+}
+
+.modal-basket.active {
+  right: 0;
+}
