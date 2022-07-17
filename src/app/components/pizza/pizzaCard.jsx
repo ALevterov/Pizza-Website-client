@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addProductToBasket, getProductCount } from '../../store/basket'
 import { getPizzaById } from '../../store/pizza'
 import PizzaOptionsBlock from './pizzaOptionsBlock'
-
+import './pizzaCard.css'
 const PizzaCard = ({
   title,
   description,
@@ -39,13 +39,13 @@ const PizzaCard = ({
             />
             <div className='d-flex justify-content-between mt-3 align-items-center'>
               <div
-                className='pizza-card__price price'
+                className='pizza__card_price price'
                 style={{ color: 'black' }}
               >
                 {sizes[selected.size].price + ' ₽'}
               </div>
-              <div className='pizza-card__basket-button '>
-                <button className='add__product-btn' onClick={handleAdd}>
+              <div className='pizza__card_basket_btn '>
+                <button className='product__btn_add' onClick={handleAdd}>
                   <b>+</b>Добавить{count !== 0 && <span>{count}</span>}
                 </button>
               </div>

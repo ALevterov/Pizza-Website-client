@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import { useSelector } from 'react-redux'
 import { getAllBasketProductsCount, getTotalPrice } from '../../store/basket'
+import './navbar.css'
 const Navbar = ({ setActive }) => {
   const totalProductsCount = useSelector(getAllBasketProductsCount())
   const totalPrice = useSelector(getTotalPrice())
@@ -42,7 +43,7 @@ const Navbar = ({ setActive }) => {
             </li>
           </ul>
           <div
-            className='navbar__basket-button'
+            className='navbar__basket_btn'
             type='submit'
             onClick={() => setActive(true)}
           >

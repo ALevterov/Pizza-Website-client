@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { selectPizza } from '../store/pizza'
-
+import './productButton.css'
 const ProductButton = ({
   text,
   dough = null,
@@ -10,7 +10,7 @@ const ProductButton = ({
   selected,
   _id,
 }) => {
-  const classes = ['flex-grow-1', 'product-btn']
+  const classes = ['flex-grow-1', 'product__btn']
   const dispatch = useDispatch()
 
   const handleClick = () => {

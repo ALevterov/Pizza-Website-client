@@ -1,12 +1,3 @@
-:root {
-  --accent-color: #fe6020;
-}
-
-.price {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 1.2rem;
-}
 .navbar__svg {
   display: flex;
   align-items: center;
@@ -24,4 +15,14 @@
   background: rgba(255, 255, 255, 0.25);
   position: absolute;
   left: -8px;
+}
+.navbar__basket_btn {
+  display: flex;
+  background-color: var(--accent-color);
+  border-radius: 30px;
+  color: #fff;
+  font-weight: 500;
+  padding: 12px 24px;
+  align-items: center;
+  border: none;
 }

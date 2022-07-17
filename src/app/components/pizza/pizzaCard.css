@@ -1,16 +1,9 @@
-.product-btn {
-  outline: none;
-  background-color: transparent;
-  border-radius: 5px;
-  border: none;
-  margin-left: 0.4rem;
+.price {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
 }
-.product-btn.active {
-  background-color: #fff;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
-}
-
-.add__product-btn {
+.product__btn_add {
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -20,12 +13,12 @@
   border-radius: 12px;
   padding: 0.2rem 0.6rem;
 }
-.add__product-btn b {
+.product__btn_add b {
   font-weight: 700;
   font-size: 1.1rem;
   margin: 0 0.2rem;
 }
-.add__product-btn span {
+.product__btn_add span {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,13 +28,4 @@
   background-color: var(--accent-color);
   color: #fff;
   margin: 0 0.2rem;
-}
-.navbar__basket-button {
-  display: flex;
-  background-color: var(--accent-color);
-  border-radius: 30px;
-  color: #fff;
-  font-weight: 500;
-  padding: 12px 24px;
-  align-items: center;
 }

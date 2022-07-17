@@ -143,7 +143,7 @@ export const pizza = [
     },
   },
   {
-    _id: '1',
+    _id: '5',
     type: PRODUCT_PIZZA,
     title: 'Ветчина и сыр',
     description: 'Ветчина, моцарелла, соус альфредо',
@@ -175,7 +175,7 @@ export const pizza = [
     },
   },
   {
-    _id: '2',
+    _id: '6',
     type: PRODUCT_PIZZA,
     title: 'Белая пепперони',
     description: 'Пикантная пепперони, соус альфредо, моцарелла',
@@ -207,7 +207,7 @@ export const pizza = [
     },
   },
   {
-    _id: '3',
+    _id: '7',
     type: PRODUCT_PIZZA,
     title: 'Цыпленок барбекю',
     description:
@@ -240,7 +240,7 @@ export const pizza = [
     },
   },
   {
-    _id: '4',
+    _id: '8',
     type: PRODUCT_PIZZA,
     title: 'Мясная',
     description:
