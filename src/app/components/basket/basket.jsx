@@ -86,11 +86,8 @@ const Basket = ({ active, setActive }) => {
                   return (
                     <BasketItem
                       key={prod._id + '_' + i}
-                      title={prod.title}
-                      count={prod.count}
-                      selected={prod.selected}
-                      image={prod.image}
-                      type={prod.type}
+                      basketId={prod._basketId}
+                      prodId={prod._id}
                     />
                   )
                 })

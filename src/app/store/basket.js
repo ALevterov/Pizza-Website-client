@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { nanoid } from 'nanoid'
 import { PRODUCT_PIZZA } from '../utils/consts'
 const initialState = {
   enteties: {
@@ -13,13 +14,18 @@ const busketSlice = createSlice({
     productAddedToBasket: (state, action) => {
       const products = state.enteties.products
       const payload = action.payload
+      console.log(payload)
       const keys = Object.keys(products)
       if (keys.length === 0) {
-        state.enteties.products[payload._id] = [{ ...payload }]
+        state.enteties.products[payload._id] = [
+          { ...payload, _basketId: nanoid() },
+        ]
         return
       }
       if (!keys.includes(payload._id)) {
-        state.enteties.products[payload._id] = [{ ...payload }]
+        state.enteties.products[payload._id] = [
+          { ...payload, _basketId: nanoid() },
+        ]
       } else {
         let flag = true
         const newArrayOfProductsWithSameId = products[payload._id].map(prod => {
@@ -35,8 +41,44 @@ const busketSlice = createSlice({
           }
         })
         if (flag) {
-          newArrayOfProductsWithSameId.push({ ...payload })
+          newArrayOfProductsWithSameId.push({ ...payload, _basketId: nanoid() })
         }
+        state.enteties.products[payload._id] = newArrayOfProductsWithSameId
+      }
+    },
+    productDeletedFromBasket: (state, action) => {
+      const products = state.enteties.products
+      const payload = action.payload
+      let flag = null
+      const newArrayOfProductsWithSameId = products[payload._id].map(
+        (prod, i) => {
+          if (prod.type === PRODUCT_PIZZA) {
+            if (
+              JSON.stringify(prod.selected) === JSON.stringify(payload.selected)
+            ) {
+              if (payload.remove) {
+                flag = i
+                return { ...prod, count: prod.count }
+              } else {
+                if (+prod.count === 1) {
+                  flag = i
+                }
+                return { ...prod, count: prod.count - 1 }
+              }
+            } else {
+              return prod
+            }
+          }
+        }
+      )
+
+      if (flag !== null) {
+        newArrayOfProductsWithSameId.splice(flag, 1)
+      }
+
+      if (newArrayOfProductsWithSameId.length === 0) {
+        delete state.enteties.products[payload._id]
+      } else {
         state.enteties.products[payload._id] = newArrayOfProductsWithSameId
       }
     },
@@ -44,10 +86,13 @@ const busketSlice = createSlice({
 })
 
 const { reducer: basketReducer, actions } = busketSlice
-const { productAddedToBasket } = actions
+const { productAddedToBasket, productDeletedFromBasket } = actions
 
 export const addProductToBasket = payload => dispatch => {
   dispatch(productAddedToBasket(payload))
+}
+export const deleteProductFromBasket = payload => dispatch => {
+  dispatch(productDeletedFromBasket(payload))
 }
 export const getProductsFromBasket = () => state =>
   state.basket.enteties.products
@@ -85,6 +130,11 @@ export const getAllBasketProductsCount = () => state => {
   }
   return totalCount
 }
+
+export const getProductByTwoId = (prodId, basketId) => state =>
+  state.basket.enteties.products[prodId].find(
+    prod => prod._basketId === basketId
+  )
 
 export const getProductById = prodId => state => {
   if (!state.busket.enteties.products === {}) {

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addProductToBasket, getProductCount } from '../../store/basket'
 import { getPizzaById } from '../../store/pizza'
 import PizzaOptionsBlock from './pizzaOptionsBlock'
+import { nanoid } from 'nanoid'
 import './pizzaCard.css'
 const PizzaCard = ({
   title,
