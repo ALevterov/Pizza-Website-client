@@ -5,6 +5,11 @@
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
+svg path {
+  stroke: inherit;
+  stroke-width: inherit;
+  fill: inherit;
+}
 .roboto-l {
   font-weight: 300;
 }

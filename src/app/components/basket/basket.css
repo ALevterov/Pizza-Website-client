@@ -30,7 +30,7 @@
   transition-property: transform;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.5, 1, 0.5, 1);
-
+  overflow-y: scroll;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -113,10 +113,13 @@
   padding: 0 4px;
 }
 .basket__item_bottom_btn_section > button {
-  background: #5c6370;
   background: transparent;
   border: none;
 }
+.basket__item_bottom_btn_section > button:hover > svg > g,
+.basket__item_bottom_btn_section > button:hover > svg > rect {
+  fill: #000;
+}
 .basket__item_bottom_btn_section > * {
-  padding: 3px 10px 5px 10px;
+  padding: 4px 10px 6px 10px;
 }

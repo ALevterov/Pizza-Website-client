@@ -83,13 +83,13 @@ const BasketItem = ({ basketId, prodId }) => {
         <div className='basket__item_bottom_btn_section d-flex justify-content-center align-items-center'>
           <button onClick={() => deleteOne()}>
             <svg width='10' height='10' viewBox='0 0 10 10' className='icon'>
-              <rect fill='#454B54' y='4' width='10' height='2' rx='1'></rect>
+              <rect fill='#5c6370' y='4' width='10' height='2' rx='1'></rect>
             </svg>
           </button>
-          <div style={{ marginBottom: '-2px' }}>{count}</div>
+          <div style={{ marginBottom: '-3px' }}>{count}</div>
           <button onClick={() => addOne()}>
             <svg width='10' height='10' viewBox='0 0 10 10' className='icon'>
-              <g fill='#454B54'>
+              <g fill='#5c6370'>
                 <rect x='4' width='2' height='10' ry='1'></rect>
                 <rect y='4' width='10' height='2' rx='1'></rect>
               </g>
