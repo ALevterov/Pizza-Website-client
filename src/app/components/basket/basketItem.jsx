@@ -65,10 +65,10 @@ const BasketItem = ({ basketId, prodId }) => {
               className='basket__btn_close d-flex align-items-center justify-content-center'
               onClick={() => deleteOne(true)}
             >
-              <svg fill='#fff' viewBox='0 0 24 24'>
+              <svg fill='#000' viewBox='0 0 24 24'>
                 <path
                   d='M17.3 5.3a1 1 0 111.4 1.4L13.42 12l5.3 5.3a1 1 0 11-1.42 1.4L12 13.42l-5.3 5.3a1 1 0 01-1.4-1.42l5.28-5.3-5.3-5.3A1 1 0 016.7 5.3l5.3 5.28 5.3-5.3z'
-                  fill='#000'
+                  fill='none'
                 ></path>
               </svg>
             </button>

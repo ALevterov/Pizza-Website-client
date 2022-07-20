@@ -93,6 +93,37 @@ const Basket = ({ active, setActive }) => {
                 })
               })}
             </section>
+            <section className='basket__footer'>
+              <div className='basket__footer_total'>
+                <div className='basket__footer_total_block'>
+                  <div className='basket__footer_total_block_left'>
+                    {`${productCount} товар`}
+                  </div>
+                  <div className='basket__footer_total_block_right'>
+                    {`${totalPrice} ₽`}
+                  </div>
+                </div>
+                <div className='basket__footer_block_delivery'>
+                  <div className='basket__footer_total_block_left'>
+                    доставка
+                  </div>
+                  <div className='basket__footer_total_block_right'>
+                    {+totalPrice >= 700 ? 'бесплатно' : '150 ₽'}
+                  </div>
+                </div>
+              </div>
+              <div className='basket__footer_sum'>
+                <div className='basket__footer_sum_block'>
+                  <div className='basket__footer_sum_block_left'>
+                    Сумма заказа
+                  </div>
+                  <div className='basket__footer_sum_block_right'>
+                    {`${totalPrice} ₽`}
+                  </div>
+                </div>
+              </div>
+              <button className=''></button>
+            </section>
           </div>
         ) : (
           <EmptyBasket />
