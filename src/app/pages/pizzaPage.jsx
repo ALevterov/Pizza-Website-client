@@ -6,7 +6,6 @@ const PizzaPage = () => {
   const pizza = useSelector(getAllPizza())
   return (
     <>
-      <h1>Пицца</h1>
       <div className='container'>
         <div className='card-group align-items-stretch'>
           {!isLoadingPizza

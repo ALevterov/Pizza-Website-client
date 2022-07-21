@@ -1,8 +1,9 @@
 .modal__window {
-  display: flex;
+  display: block;
   position: relative;
   z-index: 1000;
   background: transparent;
+  overflow: hidden;
 }
 .modal__shade {
   position: fixed;
@@ -24,7 +25,6 @@
   opacity: 1;
   background: rgba(0, 0, 0, 0.64) none repeat scroll 0% 0%;
 }
-
 .modal__basket {
   transform: translateX(430px);
   transition-property: transform;
@@ -156,4 +156,29 @@
   position: absolute;
   right: 10px;
   top: calc(50% - 13px);
+}
+.btn_close {
+  position: absolute;
+  top: calc(50% - 24px);
+
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  z-index: 1100;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 500ms ease 0s, right 0.3s ease-out 0s;
+}
+.btn_close:hover {
+  transform: scale(1.1) rotate(180deg);
+}
+.modal__shade.active .btn_close {
+  right: 440px;
+}
+.modal__shade .btn_close {
+  right: -100px;
 }

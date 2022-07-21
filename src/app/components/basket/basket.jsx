@@ -9,7 +9,7 @@ import './basket.css'
 import emptyBasket from '../../assets/empty-basket.svg'
 import BasketItem from './basketItem'
 
-const EmptyBasket = () => {
+const EmptyBasket = ({ setActive }) => {
   return (
     <div className='modal__basket_empty h-100'>
       <div className='p-4 d-flex justify-content-center align-items-center flex-column text-center h-100'>
@@ -23,7 +23,12 @@ const EmptyBasket = () => {
           Ваша корзина пуста, выберите понравившийся товар и добавьте в корзину.
           Мы доставим ваш заказ бесплатно от 700 ₽.
         </div>
-        <button className='navbar__basket_btn mt-1'>Вернуться в меню</button>
+        <button
+          className='navbar__basket_btn mt-1'
+          onClick={() => setActive(false)}
+        >
+          Вернуться в меню
+        </button>
       </div>
     </div>
   )
@@ -118,7 +123,19 @@ const Basket = ({ active, setActive }) => {
         ref={shadeRef}
         className='modal__shade'
         onClick={() => setActive(false)}
-      ></div>
+      >
+        {' '}
+        <button className='btn_close'>
+          <svg width='25' height='25' viewBox='0 0 25 25' fill='#fff'>
+            <path
+              fill-rule='evenodd'
+              clip-rule='evenodd'
+              d='M9.61 12.199L.54 3.129A1.833 1.833 0 113.13.536l9.07 9.07L21.27.54a1.833 1.833 0 012.592 2.592l-9.068 9.068 9.07 9.07a1.833 1.833 0 01-2.59 2.592l-9.072-9.07-9.073 9.073a1.833 1.833 0 01-2.591-2.592L9.61 12.2z'
+              fill='#fff'
+            ></path>
+          </svg>
+        </button>
+      </div>
       <div ref={basketRef} className='modal__basket'>
         {+productCount !== 0 ? (
           <>
@@ -146,7 +163,7 @@ const Basket = ({ active, setActive }) => {
             <BasketFooter productCount={productCount} totalPrice={totalPrice} />
           </>
         ) : (
-          <EmptyBasket />
+          <EmptyBasket setActive={setActive} />
         )}
       </div>
     </div>
