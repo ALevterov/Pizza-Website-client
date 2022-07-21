@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
-import { selectPizza } from '../store/pizza'
-import './productButton.css'
+import { selectPizza } from '../../store/pizza'
+import './productBtn.css'
 const ProductButton = ({
   text,
   dough = null,

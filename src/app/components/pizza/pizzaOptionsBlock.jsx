@@ -5,7 +5,7 @@ import {
   PIZZA_MEDIUM_SIZE,
   PIZZA_SMALL_SIZE,
 } from '../../utils/consts'
-import ProductButton from '../productButton'
+import ProductButton from '../buttons/productBtn'
 
 const PizzaOptionsBlock = ({ dough, sizes, _id, selected }) => {
   return (

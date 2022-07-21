@@ -1,13 +1,11 @@
 :root {
-  --accent-color: #fe6020;
+  --accent-color: #ff6900;
 }
 * {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
 svg path {
-  stroke: inherit;
-  stroke-width: inherit;
   fill: inherit;
 }
 .roboto-l {
@@ -33,4 +31,17 @@ svg path {
 }
 .p-04 {
   padding: 0.4rem;
+}
+
+.btn_accent {
+  border: none;
+  outline: none;
+  border-radius: 9999px;
+
+  padding: 12px 0;
+  background-color: var(--accent-color);
+
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
 }
