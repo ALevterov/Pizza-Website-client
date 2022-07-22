@@ -5,9 +5,14 @@ import whitePepperoni from '../app/assets/whitePepperoni.jpeg'
 import {
   DOUGH_THICK,
   DOUGH_THIN,
+  PIZZA_CLOSED,
+  PIZZA_GRILL,
   PIZZA_LARGE_SIZE,
+  PIZZA_MEAT,
   PIZZA_MEDIUM_SIZE,
   PIZZA_SMALL_SIZE,
+  PIZZA_SPICY,
+  PIZZA_VEGAN,
   PRODUCT_PIZZA,
 } from '../app/utils/consts'
 export const pizza = [
@@ -42,6 +47,7 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_VEGAN, PIZZA_GRILL],
   },
   {
     _id: '2',
@@ -74,6 +80,7 @@ export const pizza = [
       size: PIZZA_SMALL_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_MEAT, PIZZA_CLOSED],
   },
   {
     _id: '3',
@@ -107,6 +114,7 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_VEGAN],
   },
   {
     _id: '4',
@@ -141,6 +149,7 @@ export const pizza = [
       size: PIZZA_LARGE_SIZE,
       dough: DOUGH_THICK,
     },
+    features: [PIZZA_MEAT, PIZZA_SPICY],
   },
   {
     _id: '5',
@@ -173,6 +182,7 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_CLOSED, PIZZA_GRILL],
   },
   {
     _id: '6',
@@ -205,6 +215,7 @@ export const pizza = [
       size: PIZZA_SMALL_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_VEGAN, PIZZA_CLOSED],
   },
   {
     _id: '7',
@@ -238,6 +249,7 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_GRILL, PIZZA_SPICY, PIZZA_MEAT],
   },
   {
     _id: '8',
@@ -272,6 +284,7 @@ export const pizza = [
       size: PIZZA_LARGE_SIZE,
       dough: DOUGH_THICK,
     },
+    features: [PIZZA_MEAT, PIZZA_SPICY],
   },
 ]
 
@@ -283,11 +296,15 @@ const pizzaApi = {
       }, 700)
     })
   },
-  getPizza: async (page, limit) => {
-    const chunk = pizza.slice((page - 1) * limit, limit * page)
+  getPizza: async (page, limit, pizzaFeature) => {
+    let filteredPizza = pizza
+    if (pizzaFeature) {
+      filteredPizza = pizza.filter(p => p?.features.includes(pizzaFeature))
+    }
+    const chunk = filteredPizza.slice((page - 1) * limit, limit * page)
     return new Promise(resolve => {
       setTimeout(() => {
-        resolve(chunk)
+        resolve({ chunk, count: filteredPizza.length })
       }, 700)
     })
   },

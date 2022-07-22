@@ -5,7 +5,6 @@ import PizzaPage from './pages/pizzaPage'
 import DrinksPage from './pages/drinksPage'
 import DessertPage from './pages/dessertPage'
 import MainPage from './pages/mainPage'
-import PizzaLoader from './components/hoc/pizzaLoader'
 import Basket from './components/basket/basket'
 import { useState } from 'react'
 

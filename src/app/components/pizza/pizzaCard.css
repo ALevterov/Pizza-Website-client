@@ -12,7 +12,7 @@
   font-size: 0.8rem;
   border-radius: 12px;
   padding: 0.2rem 0.6rem;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 .product__btn_add:hover {
   color: #fff;
@@ -33,4 +33,9 @@
   background-color: var(--accent-color);
   color: #fff;
   margin: 0 0.2rem;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.product__btn_add:hover span {
+  background-color: #fff;
+  color: var(--accent-color);
 }
