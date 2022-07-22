@@ -5,9 +5,14 @@ import whitePepperoni from '../app/assets/whitePepperoni.jpeg'
 import {
   DOUGH_THICK,
   DOUGH_THIN,
+  PIZZA_CLOSED,
+  PIZZA_GRILL,
   PIZZA_LARGE_SIZE,
+  PIZZA_MEAT,
   PIZZA_MEDIUM_SIZE,
   PIZZA_SMALL_SIZE,
+  PIZZA_SPICY,
+  PIZZA_VEGAN,
   PRODUCT_PIZZA,
 } from '../app/utils/consts'
 export const pizza = [
@@ -42,6 +47,7 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_VEGAN, PIZZA_GRILL],
   },
   {
     _id: '2',
@@ -74,6 +80,7 @@ export const pizza = [
       size: PIZZA_SMALL_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_MEAT, PIZZA_CLOSED],
   },
   {
     _id: '3',
@@ -107,6 +114,7 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_VEGAN],
   },
   {
     _id: '4',
@@ -141,11 +149,12 @@ export const pizza = [
       size: PIZZA_LARGE_SIZE,
       dough: DOUGH_THICK,
     },
+    features: [PIZZA_MEAT, PIZZA_SPICY],
   },
   {
     _id: '5',
     type: PRODUCT_PIZZA,
-    title: 'Ветчина и сыр',
+    title: 'Ветчина и Semen',
     description: 'Ветчина, моцарелла, соус альфредо',
     image: hamAndCheese,
     sizes: {
@@ -173,11 +182,12 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_CLOSED, PIZZA_GRILL],
   },
   {
     _id: '6',
     type: PRODUCT_PIZZA,
-    title: 'Белая пепперони',
+    title: 'Белая Jabroni',
     description: 'Пикантная пепперони, соус альфредо, моцарелла',
     image: whitePepperoni,
     sizes: {
@@ -205,11 +215,12 @@ export const pizza = [
       size: PIZZA_SMALL_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_VEGAN, PIZZA_CLOSED],
   },
   {
     _id: '7',
     type: PRODUCT_PIZZA,
-    title: 'Цыпленок барбекю',
+    title: 'Воробушек барбекю',
     description:
       'Цыпленок, бекон, соус барбекю, красный лук, моцарелла, томатный соус',
     image: barbecueChicken,
@@ -238,11 +249,12 @@ export const pizza = [
       size: PIZZA_MEDIUM_SIZE,
       dough: DOUGH_THIN,
     },
+    features: [PIZZA_GRILL, PIZZA_SPICY, PIZZA_MEAT],
   },
   {
     _id: '8',
     type: PRODUCT_PIZZA,
-    title: 'Мясная',
+    title: 'Fistная',
     description:
       'Цыпленок, ветчина, пикантная пепперони, острая чоризо, моцарелла, томатный соус',
     image: meaty,
@@ -272,6 +284,7 @@ export const pizza = [
       size: PIZZA_LARGE_SIZE,
       dough: DOUGH_THICK,
     },
+    features: [PIZZA_MEAT, PIZZA_SPICY],
   },
 ]
 
@@ -280,7 +293,19 @@ const pizzaApi = {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve(pizza)
-      }, 1000)
+      }, 700)
+    })
+  },
+  getPizza: async (page, limit, pizzaFeature) => {
+    let filteredPizza = pizza
+    if (pizzaFeature) {
+      filteredPizza = pizza.filter(p => p?.features.includes(pizzaFeature))
+    }
+    const chunk = filteredPizza.slice((page - 1) * limit, limit * page)
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({ chunk, count: filteredPizza.length })
+      }, 700)
     })
   },
 }

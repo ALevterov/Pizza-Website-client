@@ -1,0 +1,36 @@
+.page-item {
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.page-item[disabled],
+.page-item:disabled .page-link {
+  color: gray;
+}
+.page-item[disabled]:hover .page-link,
+.page-item:disabled:hover .page-link {
+  cursor: auto;
+  background-color: #fff;
+}
+.row > div {
+  width: auto;
+}
+.pizza__filter_item {
+  cursor: pointer;
+  padding: 8px 16px;
+  background-color: #f9f9f9;
+  color: #2c2c2c;
+  border: none;
+  border-radius: 30px;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+  margin-right: 10px;
+  font-weight: 500;
+  font-size: 16px;
+}
+.pizza__filter_item.active {
+  background-color: #282828;
+  color: #fff;
+}

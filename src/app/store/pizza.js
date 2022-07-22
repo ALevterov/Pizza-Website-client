@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import pizzaApi from '../../mockData/pizza'
 const initialState = {
   enteties: [],
+  count: 0,
   isLoading: true,
   dataLoaded: false,
 }
@@ -12,10 +13,11 @@ const pizzaSlice = createSlice({
     pizzaRequested: state => {
       state.isLoading = true
     },
-    pizzaRecieved: (state, action) => {
-      state.enteties = action.payload
+    pizzaNextUploaded: (state, action) => {
+      // state.enteties = [...state.enteties, ...action.payload] // если пытаемся закидывать по подгружаемому кусочку в стейт (проблемы со страницами при непоследовательном переходе по ним)
+      state.enteties = action.payload.chunk
+      state.count = action.payload.count // при переходе на новую страницу каждый раз будем обращаться к серверу и получать нужные продукты
       state.isLoading = false
-      state.dataLoaded = true
     },
     pizzaRequestFailed: (state, action) => {
       state.error = action.payload
@@ -49,6 +51,7 @@ const {
   pizzaRequestFailed,
   pizzaSelected,
   pizzaCountChanged,
+  pizzaNextUploaded,
 } = actions
 export const fetchAllPizza = () => async dispatch => {
   dispatch(pizzaRequested())
@@ -60,7 +63,25 @@ export const fetchAllPizza = () => async dispatch => {
     dispatch(pizzaRequestFailed(error.message))
   }
 }
+export const uploadPizza =
+  ({ currentPage, limit, pizzaFeature }) =>
+  async dispatch => {
+    dispatch(pizzaRequested())
+
+    try {
+      const { chunk, count } = await pizzaApi.getPizza(
+        currentPage,
+        limit,
+        pizzaFeature
+      )
+      dispatch(pizzaNextUploaded({ chunk, count }))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 export const getPizzaLoadingState = () => state => state.pizza.isLoading
+
 export const getAllPizza = () => state => state.pizza.enteties
 
 export const selectPizza = payload => async dispatch =>
@@ -72,5 +93,5 @@ export const changePizzaCount = payload => dispatch =>
 export const getPizzaById = id => state =>
   state.pizza.enteties.find(p => p._id === id)
 
-export const pizzaLoadedStatus = () => state => state.pizza.dataLoaded
+export const getPizzaCount = () => state => state.pizza.count
 export default pizzaReducer
