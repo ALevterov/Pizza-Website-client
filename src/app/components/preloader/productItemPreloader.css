@@ -1,0 +1,17 @@
+.preloader__title,
+.preloader__description > div {
+  height: 20px;
+  border-radius: 12px;
+  background-color: #edeef2;
+  margin-bottom: 6px;
+}
+.preloader__title {
+  width: 40%;
+}
+
+.preloader__options {
+  background-color: #edeef2;
+  height: 50px;
+  margin-top: 20px;
+  border-radius: 12px;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PizzaCard from '../components/pizza/pizzaCard'
+import ProductPreloader from '../components/preloader/productPreloader'
 import {
   getAllPizza,
   getPizzaLoadedStatus,
@@ -9,6 +10,7 @@ import {
   uploadPizzaFirstTime,
 } from '../store/pizza'
 import './pizzaPage.css'
+import preloadPizzaImage from '../assets/preloadPizza.svg'
 const PizzaPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -17,7 +19,7 @@ const PizzaPage = () => {
   const pizzaLoadedStatus = useSelector(getPizzaLoadedStatus())
 
   const count = 8
-  const limit = 2
+  const limit = 4
   const offset = limit * currentPage - limit
 
   const pagesCount = Math.ceil(count / limit)
@@ -34,28 +36,28 @@ const PizzaPage = () => {
   }
 
   useEffect(() => {
-    if (currentPage === 1) {
-      // if (pizzaLoadedStatus) return
-
-      dispatch(uploadPizzaFirstTime(limit)) // получаем первую страницу пицц
-    } else {
-      dispatch(uploadPizza(currentPage, limit, count)) // получаем следующую страницу пицц
-    }
+    // if (currentPage === 1) {
+    //   dispatch(uploadPizzaFirstTime(limit)) // получаем первую страницу пицц
+    // } else {
+    //   dispatch(uploadPizza(currentPage, limit, count)) // получаем следующую страницу пицц
+    // }
+    dispatch(uploadPizza(currentPage, limit, count))
   }, [currentPage])
 
   // const pizzaSlice = pizza.slice(offset, limit * currentPage)
   const pizzaSlice = pizza
 
-  console.log(pizzaSlice)
   return (
     <>
       <div className='container mt-4'>
         <div className='card-group align-items-stretch'>
-          {!isLoadingPizza
-            ? pizzaSlice.map(p => {
-                return <PizzaCard key={p._id} {...p} />
-              })
-            : 'loading...'}
+          {!isLoadingPizza ? (
+            pizzaSlice.map(p => {
+              return <PizzaCard key={p._id} {...p} />
+            })
+          ) : (
+            <ProductPreloader count={limit} image={preloadPizzaImage} />
+          )}
         </div>
       </div>
       <div className='container mt-4'>

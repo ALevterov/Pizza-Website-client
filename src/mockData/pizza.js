@@ -280,7 +280,7 @@ const pizzaApi = {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve(pizza)
-      }, 500)
+      }, 700)
     })
   },
   getPizza: async (page, limit) => {
@@ -288,7 +288,7 @@ const pizzaApi = {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve(chunk)
-      }, 500)
+      }, 700)
     })
   },
 }
