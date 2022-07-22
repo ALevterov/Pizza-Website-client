@@ -12,6 +12,11 @@
   font-size: 0.8rem;
   border-radius: 12px;
   padding: 0.2rem 0.6rem;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+.product__btn_add:hover {
+  color: #fff;
+  background-color: var(--accent-color);
 }
 .product__btn_add b {
   font-weight: 700;

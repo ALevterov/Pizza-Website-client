@@ -14,3 +14,9 @@
   cursor: auto;
   background-color: #fff;
 }
+.row > div {
+  width: auto;
+}
+.pizza__filter_item {
+  padding: 8px 16px;
+}

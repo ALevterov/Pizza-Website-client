@@ -36,23 +36,39 @@ const PizzaPage = () => {
   }
 
   useEffect(() => {
-    // if (currentPage === 1) {
-    //   dispatch(uploadPizzaFirstTime(limit)) // получаем первую страницу пицц
-    // } else {
-    //   dispatch(uploadPizza(currentPage, limit, count)) // получаем следующую страницу пицц
-    // }
     dispatch(uploadPizza(currentPage, limit, count))
   }, [currentPage])
 
-  // const pizzaSlice = pizza.slice(offset, limit * currentPage)
-  const pizzaSlice = pizza
+  const PizzaFilter = () => {
+    const cases = [
+      { title: 'Все' },
+      { title: 'Мясные' },
+      { title: 'Вегетарианские' },
+      { title: 'Гриль' },
+      { title: 'Острые' },
+      { title: 'Закрытые' },
+    ]
+    return (
+      <div className='container mt-4'>
+        <div className='row d-flex justify-content-between'>
+          <div className='d-flex justify-content-around flex-row'>
+            {cases.map(item => {
+              return <div className='pizza__filter_item'>{item.title}</div>
+            })}
+          </div>
+          <div>Сортировка по</div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
+      <PizzaFilter />
       <div className='container mt-4'>
         <div className='card-group align-items-stretch'>
           {!isLoadingPizza ? (
-            pizzaSlice.map(p => {
+            pizza.map(p => {
               return <PizzaCard key={p._id} {...p} />
             })
           ) : (
