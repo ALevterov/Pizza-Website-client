@@ -145,7 +145,7 @@ export const pizza = [
   {
     _id: '5',
     type: PRODUCT_PIZZA,
-    title: 'Ветчина и сыр',
+    title: 'Ветчина и Semen',
     description: 'Ветчина, моцарелла, соус альфредо',
     image: hamAndCheese,
     sizes: {
@@ -177,7 +177,7 @@ export const pizza = [
   {
     _id: '6',
     type: PRODUCT_PIZZA,
-    title: 'Белая пепперони',
+    title: 'Белая Jabroni',
     description: 'Пикантная пепперони, соус альфредо, моцарелла',
     image: whitePepperoni,
     sizes: {
@@ -209,7 +209,7 @@ export const pizza = [
   {
     _id: '7',
     type: PRODUCT_PIZZA,
-    title: 'Цыпленок барбекю',
+    title: 'Воробушек барбекю',
     description:
       'Цыпленок, бекон, соус барбекю, красный лук, моцарелла, томатный соус',
     image: barbecueChicken,
@@ -242,7 +242,7 @@ export const pizza = [
   {
     _id: '8',
     type: PRODUCT_PIZZA,
-    title: 'Мясная',
+    title: 'Fistная',
     description:
       'Цыпленок, ветчина, пикантная пепперони, острая чоризо, моцарелла, томатный соус',
     image: meaty,
@@ -280,7 +280,15 @@ const pizzaApi = {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve(pizza)
-      }, 1000)
+      }, 500)
+    })
+  },
+  getPizza: async (page, limit) => {
+    const chunk = pizza.slice((page - 1) * limit, limit * page)
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(chunk)
+      }, 500)
     })
   },
 }

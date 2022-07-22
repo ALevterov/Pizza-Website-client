@@ -14,7 +14,6 @@ const busketSlice = createSlice({
     productAddedToBasket: (state, action) => {
       const products = state.enteties.products
       const payload = action.payload
-      console.log(payload)
       const keys = Object.keys(products)
       if (keys.length === 0) {
         state.enteties.products[payload._id] = [

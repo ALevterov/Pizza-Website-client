@@ -12,10 +12,15 @@ const pizzaSlice = createSlice({
     pizzaRequested: state => {
       state.isLoading = true
     },
-    pizzaRecieved: (state, action) => {
+    pizzaFirstUploaded: (state, action) => {
       state.enteties = action.payload
       state.isLoading = false
       state.dataLoaded = true
+    },
+    pizzaNextUploaded: (state, action) => {
+      // state.enteties = [...state.enteties, ...action.payload] // если пытаемся закидывать по подгружаемому кусочку в стейт (проблемы со страницами при непоследовательном переходе по ним)
+      state.enteties = action.payload // при переходе на новую страницу каждый раз будем обращаться к серверу и получать нужные продукты
+      state.isLoading = false
     },
     pizzaRequestFailed: (state, action) => {
       state.error = action.payload
@@ -49,6 +54,8 @@ const {
   pizzaRequestFailed,
   pizzaSelected,
   pizzaCountChanged,
+  pizzaFirstUploaded,
+  pizzaNextUploaded,
 } = actions
 export const fetchAllPizza = () => async dispatch => {
   dispatch(pizzaRequested())
@@ -60,7 +67,34 @@ export const fetchAllPizza = () => async dispatch => {
     dispatch(pizzaRequestFailed(error.message))
   }
 }
+export const uploadPizza =
+  (currentPage, limit, count) => async (dispatch, getState) => {
+    const length = getState().pizza.enteties.length
+    console.log(length, currentPage * limit)
+    if (length >= currentPage * limit || length >= count) return
+
+    dispatch(pizzaRequested())
+
+    try {
+      const pizza = await pizzaApi.getPizza(currentPage, limit)
+      dispatch(pizzaNextUploaded(pizza))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+export const uploadPizzaFirstTime = (limit, count) => async dispatch => {
+  dispatch(pizzaRequested())
+  try {
+    const pizza = await pizzaApi.getPizza(1, limit)
+    dispatch(pizzaFirstUploaded(pizza))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const getPizzaLoadingState = () => state => state.pizza.isLoading
+
 export const getAllPizza = () => state => state.pizza.enteties
 
 export const selectPizza = payload => async dispatch =>
@@ -72,5 +106,5 @@ export const changePizzaCount = payload => dispatch =>
 export const getPizzaById = id => state =>
   state.pizza.enteties.find(p => p._id === id)
 
-export const pizzaLoadedStatus = () => state => state.pizza.dataLoaded
+export const getPizzaLoadedStatus = () => state => state.pizza.dataLoaded
 export default pizzaReducer

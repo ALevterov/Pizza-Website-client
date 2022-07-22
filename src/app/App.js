@@ -18,14 +18,7 @@ function App() {
         <Navbar setActive={setModalActive} />
         <Routes>
           <Route path='/' element={<MainPage />}></Route>
-          <Route
-            path='/pizza'
-            element={
-              <PizzaLoader>
-                <PizzaPage />
-              </PizzaLoader>
-            }
-          ></Route>
+          <Route path='/pizza' element={<PizzaPage />}></Route>
           <Route path='/drinks' element={<DrinksPage />}></Route>
           <Route path='/desserts' element={<DessertPage />}></Route>
           <Route path='*' element={<Navigate to='/' replace />} />
