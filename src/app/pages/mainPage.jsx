@@ -1,5 +1,7 @@
+import Slider from '../components/slider/Slider'
+
 const MainPage = () => {
-  return <h1>Главная</h1>
+  return <Slider />
 }
 
 export default MainPage

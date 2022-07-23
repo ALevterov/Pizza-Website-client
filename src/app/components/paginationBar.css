@@ -21,6 +21,10 @@
 .pagination-item:hover {
   background-color: #eee;
 }
+.pagination-item.active {
+  background-color: #000;
+  color: #fff;
+}
 .pagination-item .button-arrow {
   position: static;
 }

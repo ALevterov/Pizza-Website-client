@@ -117,13 +117,13 @@ const PizzaPage = () => {
           )}
         </div>
       </div>
-      {!isLoadingPizza && pages.length !== 1 && (
-        <PaginationBar
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          pages={pages}
-        />
-      )}
+      {/* {!isLoadingPizza && pages.length !== 1 && ( */}
+      <PaginationBar
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        pages={pages}
+      />
+      {/* )} */}
     </>
   )
 }
