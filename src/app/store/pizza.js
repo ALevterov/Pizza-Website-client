@@ -64,7 +64,7 @@ export const fetchAllPizza = () => async dispatch => {
   }
 }
 export const uploadPizza =
-  ({ currentPage, limit, pizzaFeature }) =>
+  ({ currentPage, limit, pizzaFeature, sortingProps }) =>
   async dispatch => {
     dispatch(pizzaRequested())
 
@@ -72,7 +72,8 @@ export const uploadPizza =
       const { chunk, count } = await pizzaApi.getPizza(
         currentPage,
         limit,
-        pizzaFeature
+        pizzaFeature,
+        sortingProps
       )
       dispatch(pizzaNextUploaded({ chunk, count }))
     } catch (error) {

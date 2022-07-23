@@ -10,7 +10,6 @@ import {
 } from '../store/pizza'
 import './pizzaPage.css'
 import preloadPizzaImage from '../assets/preloadPizza.svg'
-import arrow from '../assets/arrowUp.svg'
 import {
   PIZZA_CLOSED,
   PIZZA_GRILL,
@@ -40,6 +39,12 @@ const PizzaPage = () => {
     { title: 'Закрытые', value: PIZZA_CLOSED },
   ]
 
+  const sortCases = [
+    { title: 'цене', value: 'price' },
+    { title: 'алфавиту', value: 'alphabet' },
+    { title: 'популярности', value: 'popular' },
+  ]
+
   const count = useSelector(getPizzaCount())
   const limit = 4
   // const offset = limit * currentPage - limit
@@ -55,11 +60,14 @@ const PizzaPage = () => {
   }
 
   useEffect(() => {
-    dispatch(uploadPizza({ currentPage, limit, pizzaFeature }))
-  }, [currentPage, pizzaFeature])
+    dispatch(uploadPizza({ currentPage, limit, pizzaFeature, sortingProps }))
+  }, [currentPage, pizzaFeature, sortingProps])
   useEffect(() => {
     setCurrentPage(1)
-  }, [pizzaFeature])
+  }, [pizzaFeature, sortingProps])
+
+  const sortedPizza = Object.assign([], pizza)
+
   const PizzaFilter = ({ onChangepizzaFeature, pizzaFeature }) => {
     return (
       <div className='container mt-4'>
@@ -85,12 +93,14 @@ const PizzaPage = () => {
             <SortingBar
               selected={sortingProps}
               setSortingProps={setSortingProps}
+              sortCases={sortCases}
             />
           </div>
         </div>
       </div>
     )
   }
+
   return (
     <>
       <PizzaFilter
@@ -105,7 +115,7 @@ const PizzaPage = () => {
         </div>
         <div className='card-group align-items-stretch'>
           {!isLoadingPizza ? (
-            pizza.map(p => {
+            sortedPizza.map(p => {
               return <PizzaCard key={p._id} {...p} />
             })
           ) : (

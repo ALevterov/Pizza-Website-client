@@ -1,19 +1,11 @@
 import { useState } from 'react'
 import './sortingBar.css'
-const SortingBar = ({ setSortingProps, selected }) => {
+const SortingBar = ({ setSortingProps, selected, sortCases }) => {
   const [show, setShow] = useState(false)
-  const sortCases = [
-    { title: 'цене', value: 'price' },
-    { title: 'алфавиту', value: 'alphabet' },
-    { title: 'популярности', value: 'popular' },
-  ]
   const dropDownClick = value => {
-    console.log('але')
     setShow(false)
     setSortingProps(prevState => ({ ...prevState, prop: value }))
   }
-  console.log(show)
-  console.log(selected)
   return (
     <div className='sorting__bar'>
       <span

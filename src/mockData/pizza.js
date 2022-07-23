@@ -287,6 +287,11 @@ export const pizza = [
     features: [PIZZA_MEAT, PIZZA_SPICY],
   },
 ]
+const sortCases = [
+  { title: 'цене', value: 'price' },
+  { title: 'алфавиту', value: 'alphabet' },
+  { title: 'популярности', value: 'popular' },
+]
 
 const pizzaApi = {
   fetchAll: async () => {
@@ -296,12 +301,44 @@ const pizzaApi = {
       }, 700)
     })
   },
-  getPizza: async (page, limit, pizzaFeature) => {
-    let filteredPizza = pizza
+  getPizza: async (page, limit, pizzaFeature, sortingProps) => {
+    let filteredPizza = []
     if (pizzaFeature) {
       filteredPizza = pizza.filter(p => p?.features.includes(pizzaFeature))
+    } else {
+      filteredPizza = Object.assign([], pizza)
     }
+
+    const sortingPizza = () => {
+      const { direction, prop } = sortingProps
+      if (prop === sortCases[0].value) {
+        filteredPizza.sort((a, b) => {
+          if (
+            +a.sizes[a.selected.size].price >= +b.sizes[b.selected.size].price
+          ) {
+            if (direction) return 1
+            return -1
+          }
+          if (direction) return -1
+          return 1
+        })
+      }
+      if (prop === sortCases[1].value) {
+        filteredPizza.sort((a, b) => {
+          if (a.title >= b.title) {
+            if (direction) return 1
+            return -1
+          }
+          if (direction) return -1
+          else return 1
+        })
+      }
+    }
+
+    sortingPizza() // пицца отфильтрована
+
     const chunk = filteredPizza.slice((page - 1) * limit, limit * page)
+
     return new Promise(resolve => {
       setTimeout(() => {
         resolve({ chunk, count: filteredPizza.length })
