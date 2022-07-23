@@ -1,3 +1,44 @@
+.navbar__container {
+  z-index: 100;
+  background-color: #fff;
+  transition: top 0.3s ease;
+  position: sticky;
+  top: -64px;
+}
+.sticky {
+  top: 0px;
+}
+.navbar-shadow {
+  box-shadow: rgba(6, 5, 50, 0.1) 0px 4px 30px;
+}
+.navbar__brand-link,
+.navbar__pages_list-link {
+  transition: color 0.25s ease 0s;
+}
+.navbar__brand-link:hover,
+.navbar__pages_list-link:hover {
+  color: var(--accent-color);
+}
+.navbar__brand-link {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.navbar__pages_list {
+  margin: 0;
+}
+.navbar__pages_list-item {
+  display: block;
+  list-style-type: none;
+}
+.navbar__pages_list-link,
+.navbar__brand-link {
+  text-decoration: none;
+  color: #2c2c2c;
+}
+.navbar__pages_list-link {
+  margin-right: 2rem;
+  font-weight: 500;
+}
 .navbar__svg {
   display: flex;
   align-items: center;
@@ -25,4 +66,17 @@
   padding: 12px 24px;
   align-items: center;
   border: none;
+}
+.navbar__sign-in_btn {
+  color: #2c2c2c;
+  border: none;
+  font-weight: 500;
+  border-radius: 30px;
+  background-color: #fff;
+  padding: 6px 12px;
+
+  transition: color 0.25s ease 0s;
+}
+.navbar__sign-in_btn:hover {
+  color: var(--accent-color);
 }

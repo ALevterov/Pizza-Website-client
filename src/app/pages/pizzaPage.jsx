@@ -18,6 +18,7 @@ import {
   PIZZA_VEGAN,
 } from '../utils/consts'
 import SortingBar from '../components/sortingBar'
+import PaginationBar from '../components/paginationBar'
 const PizzaPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [pizzaFeature, setPizzaFeature] = useState(null)
@@ -51,13 +52,6 @@ const PizzaPage = () => {
 
   const pagesCount = Math.ceil(count / limit)
   const pages = new Array(pagesCount).fill('')
-
-  const nextPage = () => {
-    setCurrentPage(prevState => prevState + 1)
-  }
-  const prevPage = () => {
-    setCurrentPage(prevState => prevState - 1)
-  }
 
   useEffect(() => {
     dispatch(uploadPizza({ currentPage, limit, pizzaFeature, sortingProps }))
@@ -123,41 +117,13 @@ const PizzaPage = () => {
           )}
         </div>
       </div>
-      <div className='container mt-4'>
-        <div className='row d-flex justify-content-center align-items-center'>
-          {!isLoadingPizza && pages.length !== 1 && (
-            <nav aria-label='Page navigation example' style={{ width: 'auto' }}>
-              <ul className='pagination'>
-                <button className='page-item' disabled={currentPage === 1}>
-                  <a className='page-link' onClick={() => prevPage()}>
-                    Previous
-                  </a>
-                </button>
-                {pages.map((_, i) => {
-                  return (
-                    <button
-                      className={
-                        currentPage === i + 1 ? 'page-item active' : 'page-item'
-                      }
-                      key={i}
-                      onClick={() => setCurrentPage(i + 1)}
-                    >
-                      <a className='page-link'>{i + 1}</a>
-                    </button>
-                  )
-                })}
-                <button
-                  className='page-item'
-                  onClick={() => nextPage()}
-                  disabled={currentPage === pages.length}
-                >
-                  <a className='page-link'>Next</a>
-                </button>
-              </ul>
-            </nav>
-          )}
-        </div>
-      </div>
+      {!isLoadingPizza && pages.length !== 1 && (
+        <PaginationBar
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          pages={pages}
+        />
+      )}
     </>
   )
 }

@@ -5,6 +5,9 @@
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
+body {
+  color: #2c2c2c;
+}
 svg path {
   fill: inherit;
 }

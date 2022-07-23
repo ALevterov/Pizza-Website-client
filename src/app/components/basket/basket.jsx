@@ -6,7 +6,7 @@ import {
   getTotalPrice,
 } from '../../store/basket'
 import './basket.css'
-import emptyBasket from '../../assets/empty-basket.svg'
+import emptyBasket from '../../assets/emptyBasket.svg'
 import BasketItem from './basketItem'
 
 const EmptyBasket = ({ setActive }) => {
