@@ -1,6 +1,3 @@
-.row > div {
-  width: auto;
-}
 .pizza__filter_item {
   cursor: pointer;
   padding: 8px 16px;

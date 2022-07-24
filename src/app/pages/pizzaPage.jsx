@@ -66,7 +66,7 @@ const PizzaPage = () => {
     return (
       <div className='container mt-4'>
         <div className='row d-flex justify-content-between'>
-          <div className='d-flex justify-content-around flex-row'>
+          <div className='d-flex justify-content-around flex-row w-auto'>
             {filterCases.map(item => {
               return (
                 <div
@@ -83,7 +83,7 @@ const PizzaPage = () => {
               )
             })}
           </div>
-          <div className='d-flex align-items-center'>
+          <div className='d-flex align-items-center w-auto'>
             <SortingBar
               selected={sortingProps}
               setSortingProps={setSortingProps}

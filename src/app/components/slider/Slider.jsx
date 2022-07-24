@@ -1,18 +1,22 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import ChiefSlider from './chief-slider'
 import './chief-slider.css'
 import './slider.css'
 const Slider = () => {
   const sliderRef = useRef(null)
-  if (sliderRef) {
-    const slider = new ChiefSlider(sliderRef.current, {
-      loop: true,
-      autoplay: true,
-      interval: 7000,
-    })
-  }
+  let slider
+
+  useEffect(() => {
+    if (sliderRef) {
+      slider = new ChiefSlider(sliderRef.current, {
+        loop: true,
+        autoplay: true,
+        interval: 7000,
+      })
+    }
+  }, [sliderRef])
   return (
-    <div className='container'>
+    <div className='container mt-4'>
       <div className='slider' ref={sliderRef}>
         <div className='slider__wrapper'>
           <div className='slider__items'>
