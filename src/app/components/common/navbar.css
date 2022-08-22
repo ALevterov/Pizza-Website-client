@@ -39,6 +39,9 @@
   margin-right: 2rem;
   font-weight: 500;
 }
+.navbar__pages_list-link.active {
+  color: var(--accent-color);
+}
 .navbar__svg {
   display: flex;
   align-items: center;

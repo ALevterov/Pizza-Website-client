@@ -35,12 +35,11 @@
 .pagination-item-next {
   margin-top: -2px;
 }
-.pagination-item[disabled],
+/* .pagination-item[disabled],
 .pagination-item:disabled .page-link {
-  color: gray;
+  display: none;
 }
 .pagination-item[disabled]:hover .page-link,
 .pagination-item:disabled:hover .page-link {
-  cursor: auto;
-  background-color: #fff;
-}
+  display: none;
+} */

@@ -2,6 +2,10 @@ import hamAndCheese from '../app/assets/hamAndCheese.jpeg'
 import barbecueChicken from '../app/assets/barbecueChicken.jpeg'
 import meaty from '../app/assets/meaty.jpeg'
 import whitePepperoni from '../app/assets/whitePepperoni.jpeg'
+import fourSeazon from '../app/assets/4seazon.jpeg'
+import pesto from '../app/assets/pesto.jpeg'
+import arriva from '../app/assets/arriva.jpeg'
+import margarita from '../app/assets/margarita.jpeg'
 import {
   DOUGH_THICK,
   DOUGH_THIN,
@@ -154,24 +158,26 @@ export const pizza = [
   {
     _id: '5',
     type: PRODUCT_PIZZA,
-    title: 'Ветчина и Semen',
-    description: 'Ветчина, моцарелла, соус альфредо',
-    image: hamAndCheese,
+    title: 'Четыре сезона',
+    description:
+      'Увеличенная порция моцареллы, ветчина, пикантная пепперони, кубики брынзы, томаты, шампиньоны, итальянские травы, томатный соус',
+    image: fourSeazon,
     sizes: {
       small: {
-        weigth: '330',
+        weigth: '440',
         diametr: '25',
-        price: '329',
+        price: '439',
       },
       medium: {
-        weigth: '500',
+        weigth: '660',
         diametr: '30',
-        price: '539',
+        price: '669',
+        selected: true,
       },
       large: {
-        weigth: '670',
+        weigth: '900',
         diametr: '35',
-        price: '649',
+        price: '829',
       },
     },
     dough: {
@@ -179,32 +185,33 @@ export const pizza = [
       thick: DOUGH_THICK,
     },
     selected: {
-      size: PIZZA_MEDIUM_SIZE,
-      dough: DOUGH_THIN,
+      size: PIZZA_LARGE_SIZE,
+      dough: DOUGH_THICK,
     },
     features: [PIZZA_CLOSED, PIZZA_GRILL],
   },
   {
     _id: '6',
     type: PRODUCT_PIZZA,
-    title: 'Белая Jabroni',
-    description: 'Пикантная пепперони, соус альфредо, моцарелла',
-    image: whitePepperoni,
+    title: 'Песто',
+    description:
+      'Цыпленок, соус песто, кубики брынзы, томаты, моцарелла, соус альфредо',
+    image: pesto,
     sizes: {
       small: {
-        weigth: '310',
+        weigth: '420',
         diametr: '25',
-        price: '439',
+        price: '489',
       },
       medium: {
-        weigth: '490',
+        weigth: '630',
         diametr: '30',
-        price: '669',
+        price: '739',
       },
       large: {
-        weigth: '620',
+        weigth: '860',
         diametr: '35',
-        price: '829',
+        price: '889',
       },
     },
     dough: {
@@ -220,25 +227,25 @@ export const pizza = [
   {
     _id: '7',
     type: PRODUCT_PIZZA,
-    title: 'Воробушек барбекю',
+    title: 'Аррива!',
     description:
-      'Цыпленок, бекон, соус барбекю, красный лук, моцарелла, томатный соус',
-    image: barbecueChicken,
+      'Цыпленок, острая чоризо, соус бургер, сладкий перец, красный лук, томаты, моцарелла, соус ранч, чеснок',
+    image: arriva,
     sizes: {
       small: {
-        weigth: '450',
+        weigth: '390',
         diametr: '25',
-        price: '489',
+        price: '439',
       },
       medium: {
-        weigth: '670',
+        weigth: '590',
         diametr: '30',
-        price: '739',
+        price: '669',
       },
       large: {
-        weigth: '920',
+        weigth: '790',
         diametr: '35',
-        price: '889',
+        price: '829',
       },
     },
     dough: {
@@ -254,26 +261,26 @@ export const pizza = [
   {
     _id: '8',
     type: PRODUCT_PIZZA,
-    title: 'Fistная',
+    title: 'Маргарита',
     description:
-      'Цыпленок, ветчина, пикантная пепперони, острая чоризо, моцарелла, томатный соус',
-    image: meaty,
+      'Увеличенная порция моцареллы, томаты, итальянские травы, томатный соус',
+    image: margarita,
     sizes: {
       small: {
-        weigth: '410',
+        weigth: '420',
         diametr: '25',
-        price: '489',
+        price: '389',
       },
       medium: {
-        weigth: '610',
+        weigth: '640',
         diametr: '30',
-        price: '739',
+        price: '599',
         selected: true,
       },
       large: {
-        weigth: '830',
+        weigth: '860',
         diametr: '35',
-        price: '889',
+        price: '729',
       },
     },
     dough: {

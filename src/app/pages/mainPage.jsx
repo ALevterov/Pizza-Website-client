@@ -11,15 +11,15 @@ const MainPage = () => {
       <div className='container mt-4'>
         <div className='row'>
           <div className='col-md-4'>
-            <div class='card position-relative'>
+            <div className='card position-relative'>
               <img
                 src={image}
-                class='card-img-top'
+                className='card-img-top'
                 alt='...'
                 style={{ height: '250px' }}
               />
-              <div class='card-body position-absolute'>
-                <p class='card-text'>
+              <div className='card-body position-absolute'>
+                <p className='card-text'>
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
@@ -27,15 +27,15 @@ const MainPage = () => {
             </div>
           </div>
           <div className='col-md-4'>
-            <div class='card position-relative'>
+            <div className='card position-relative'>
               <img
                 src={image}
-                class='card-img-top'
+                className='card-img-top'
                 alt='...'
                 style={{ height: '250px' }}
               />
-              <div class='card-body position-absolute'>
-                <p class='card-text'>
+              <div className='card-body position-absolute'>
+                <p className='card-text'>
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
@@ -43,15 +43,15 @@ const MainPage = () => {
             </div>
           </div>
           <div className='col-md-4'>
-            <div class='card position-relative'>
+            <div className='card position-relative'>
               <img
                 src={image}
-                class='card-img-top'
+                className='card-img-top'
                 alt='...'
                 style={{ height: '250px' }}
               />
-              <div class='card-body position-absolute'>
-                <p class='card-text'>
+              <div className='card-body position-absolute'>
+                <p className='card-text'>
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>

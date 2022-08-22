@@ -2,12 +2,13 @@ import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getAllBasketProductsCount, getTotalPrice } from '../../store/basket'
 import './navbar.css'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 const Navbar = ({ setActive }) => {
   const totalProductsCount = useSelector(getAllBasketProductsCount())
   const totalPrice = useSelector(getTotalPrice())
   const navbarRef = useRef(null)
-
+  const [activePage, setActivePage] = useState(null)
+  console.log(activePage)
   window.addEventListener('scroll', () => {
     let ticking = false
 
@@ -24,7 +25,6 @@ const Navbar = ({ setActive }) => {
       })
     }
   })
-
   return (
     <div
       className='container-fluid navbar-shadow navbar__container'
@@ -34,29 +34,57 @@ const Navbar = ({ setActive }) => {
         <nav className='navbar d-flex justify-content-between flex-row align-items-center'>
           <div className='navbar__brand'>
             {' '}
-            <NavLink className='navbar__brand-link' to='/'>
+            <NavLink
+              className='navbar__brand-link'
+              to='/'
+              onClick={() => setActive('main')}
+            >
               Супер пицца
             </NavLink>
           </div>
           <div className='navbar__pages'>
             <ul className='navbar__pages_list d-flex align-items-center'>
               <li className='navbar__pages_list-item'>
-                <NavLink className='navbar__pages_list-link' to='/'>
+                <NavLink
+                  className={`navbar__pages_list-link ${
+                    activePage === 'main' ? 'active' : ''
+                  }`}
+                  to='/'
+                  onClick={() => setActivePage('main')}
+                >
                   Главная
                 </NavLink>
               </li>
               <li className='navbar__pages_list-item'>
-                <NavLink className='navbar__pages_list-link' to='/pizza'>
+                <NavLink
+                  className={`navbar__pages_list-link ${
+                    activePage === 'pizza' ? 'active' : ''
+                  }`}
+                  to='/pizza'
+                  onClick={() => setActivePage('pizza')}
+                >
                   Пицца
                 </NavLink>
               </li>
               <li className='navbar__pages_list-item'>
-                <NavLink className='navbar__pages_list-link' to='/drinks'>
+                <NavLink
+                  className={`navbar__pages_list-link ${
+                    activePage === 'drinks' ? 'active' : ''
+                  }`}
+                  to='/drinks'
+                  onClick={() => setActivePage('drinks')}
+                >
                   Напитки
                 </NavLink>
               </li>
               <li className='navbar__pages_list-item'>
-                <NavLink className='navbar__pages_list-link' to='/desserts'>
+                <NavLink
+                  className={`navbar__pages_list-link ${
+                    activePage === 'desserts' ? 'active' : ''
+                  }`}
+                  to='/desserts'
+                  onClick={() => setActivePage('desserts')}
+                >
                   Десерты
                 </NavLink>
               </li>

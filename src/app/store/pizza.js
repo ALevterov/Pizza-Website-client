@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import pizzaApi from '../../mockData/pizza'
+import { fetchPizza } from '../http/pizzaApi'
 const initialState = {
   enteties: [],
   count: 0,
@@ -67,14 +68,14 @@ export const uploadPizza =
   ({ currentPage, limit, pizzaFeature, sortingProps }) =>
   async dispatch => {
     dispatch(pizzaRequested())
-
     try {
-      const { chunk, count } = await pizzaApi.getPizza(
-        currentPage,
-        limit,
-        pizzaFeature,
-        sortingProps
-      )
+      const { data } = await fetchPizza({
+        limit: limit.toString(),
+        page: currentPage.toString(),
+        sortingProps: JSON.stringify(sortingProps),
+        pizzaFeature: JSON.stringify(pizzaFeature),
+      })
+      const { chunk, count } = data
       dispatch(pizzaNextUploaded({ chunk, count }))
     } catch (error) {
       console.log(error)

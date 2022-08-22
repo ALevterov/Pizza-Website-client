@@ -12,6 +12,7 @@ import {
   deleteProductFromBasket,
   getProductByTwoId,
 } from '../../store/basket'
+import { bufferToImage } from '../../utils/bufferToImage'
 const getPizzaDescription = ({ size, dough }) => {
   let result = ''
   if (size === PIZZA_LARGE_SIZE) {
@@ -53,7 +54,7 @@ const BasketItem = ({ basketId, prodId }) => {
       <div className='basket__item_top d-flex'>
         <div className='basket__item_image'>
           <img
-            src={image}
+            src={bufferToImage(image)}
             alt='pizza'
             style={{ width: '60px', height: '60px' }}
           />

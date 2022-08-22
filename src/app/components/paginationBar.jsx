@@ -11,27 +11,28 @@ const PaginationBar = ({ currentPage, setCurrentPage, pages }) => {
       <div className='row d-flex justify-content-center align-items-center'>
         <nav className='pagination__nav'>
           <ul className='pagination__list d-flex align-items-center justify-content-center'>
-            <button
-              className='pagination-item pagination-item-prev'
-              disabled={currentPage === 1}
-              onClick={() => prevPage()}
-            >
-              <svg
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                fill='none'
-                className='button-arrow'
+            {currentPage !== 1 && (
+              <button
+                className='pagination-item pagination-item-prev'
+                onClick={() => prevPage()}
               >
-                <path
-                  d='M10 18l6-6-6-6'
-                  stroke='#000'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                ></path>
-              </svg>
-            </button>
+                <svg
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  className='button-arrow'
+                >
+                  <path
+                    d='M10 18l6-6-6-6'
+                    stroke='#000'
+                    strokeWidth='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                  ></path>
+                </svg>
+              </button>
+            )}
             {pages.map((_, i) => {
               return (
                 <button
@@ -47,27 +48,28 @@ const PaginationBar = ({ currentPage, setCurrentPage, pages }) => {
                 </button>
               )
             })}
-            <button
-              className='pagination-item pagination-item-next'
-              onClick={() => nextPage()}
-              disabled={currentPage === pages.length}
-            >
-              <svg
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                fill='none'
-                className='button-arrow'
+            {currentPage !== pages.length && (
+              <button
+                className='pagination-item pagination-item-next'
+                onClick={() => nextPage()}
               >
-                <path
-                  d='M10 18l6-6-6-6'
-                  stroke='#000'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                ></path>
-              </svg>
-            </button>
+                <svg
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  className='button-arrow'
+                >
+                  <path
+                    d='M10 18l6-6-6-6'
+                    stroke='#000'
+                    strokeWidth='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                  ></path>
+                </svg>
+              </button>
+            )}
           </ul>
         </nav>
       </div>

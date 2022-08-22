@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addProductToBasket, getProductCount } from '../../store/basket'
 import { getPizzaById } from '../../store/pizza'
 import PizzaOptionsBlock from './pizzaOptionsBlock'
-import { nanoid } from 'nanoid'
+import { bufferToImage } from '../../utils/bufferToImage'
 import './pizzaCard.css'
 const PizzaCard = ({
   title,
@@ -20,11 +20,11 @@ const PizzaCard = ({
   const handleAdd = () => {
     dispatch(addProductToBasket({ ...pizza, count: 1 }))
   }
-
+  bufferToImage(image)
   return (
     <div className='col-lg-3 col-md-4 col-sm-6'>
       <div className='card border-0' style={{ width: '90%', height: '100%' }}>
-        <img src={image} className='card-img-top' alt='img' />
+        <img src={bufferToImage(image)} className='card-img-top' alt='img' />
         <div className='card-body d-flex flex-column justify-content-between'>
           <div>
             {' '}

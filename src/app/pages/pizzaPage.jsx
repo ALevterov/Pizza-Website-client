@@ -19,6 +19,7 @@ import {
 } from '../utils/consts'
 import SortingBar from '../components/sortingBar'
 import PaginationBar from '../components/paginationBar'
+import { fetchPizza } from '../http/pizzaApi'
 const PizzaPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [pizzaFeature, setPizzaFeature] = useState(null)
@@ -117,13 +118,13 @@ const PizzaPage = () => {
           )}
         </div>
       </div>
-      {/* {!isLoadingPizza && pages.length !== 1 && ( */}
-      <PaginationBar
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        pages={pages}
-      />
-      {/* )} */}
+      {pages.length > 1 && (
+        <PaginationBar
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          pages={pages}
+        />
+      )}
     </>
   )
 }
