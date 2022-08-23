@@ -19,7 +19,6 @@ import {
 } from '../utils/consts'
 import SortingBar from '../components/sortingBar'
 import PaginationBar from '../components/paginationBar'
-import { fetchPizza } from '../http/pizzaApi'
 const PizzaPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [pizzaFeature, setPizzaFeature] = useState(null)
@@ -50,7 +49,6 @@ const PizzaPage = () => {
   const count = useSelector(getPizzaCount())
   const limit = 4
   // const offset = limit * currentPage - limit
-
   const pagesCount = Math.ceil(count / limit)
   const pages = new Array(pagesCount).fill('')
 

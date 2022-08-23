@@ -34,19 +34,31 @@ const getPizzaDescription = ({ size, dough }) => {
 }
 
 const BasketItem = ({ basketId, prodId }) => {
-  const { title, count, image, selected, type, sizes } = useSelector(
+  let { title, count, image, selected, type, sizes, price } = useSelector(
     getProductByTwoId(prodId, basketId)
   )
-  const price = +sizes[selected.size].price * +count
+  if (type === PRODUCT_PIZZA) {
+    price = +sizes[selected.size].price * +count
+  } else {
+    price = +price * count
+  }
 
   const dispatch = useDispatch()
 
   const addOne = () => {
-    dispatch(addProductToBasket({ type, selected, _id: prodId }))
+    if (type === PRODUCT_PIZZA) {
+      dispatch(addProductToBasket({ type, selected, _id: prodId }))
+    } else {
+      dispatch(addProductToBasket({ type, _id: prodId }))
+    }
   }
 
   const deleteOne = (remove = false) => {
-    dispatch(deleteProductFromBasket({ type, selected, _id: prodId, remove }))
+    if (type === PRODUCT_PIZZA) {
+      dispatch(deleteProductFromBasket({ type, selected, _id: prodId, remove }))
+    } else {
+      dispatch(deleteProductFromBasket({ type, _id: prodId, remove }))
+    }
   }
 
   return (
@@ -75,7 +87,7 @@ const BasketItem = ({ basketId, prodId }) => {
             </button>
           </div>
           <span className='basket__item_description_text'>
-            {type === PRODUCT_PIZZA ? getPizzaDescription(selected) : 'другое'}
+            {type === PRODUCT_PIZZA ? getPizzaDescription(selected) : ''}
           </span>
         </div>
       </div>

@@ -8,7 +8,6 @@ const Navbar = ({ setActive }) => {
   const totalPrice = useSelector(getTotalPrice())
   const navbarRef = useRef(null)
   const [activePage, setActivePage] = useState(null)
-  console.log(activePage)
   window.addEventListener('scroll', () => {
     let ticking = false
 

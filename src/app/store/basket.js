@@ -111,7 +111,12 @@ export const getTotalPrice = () => state => {
   for (const prodId of Object.keys(products)) {
     const product = products[prodId]
     totalPrice += product.reduce((count, prod) => {
-      const price = +prod.sizes[prod.selected.size].price
+      let price
+      if (prod.type === 'pizza') {
+        price = +prod.sizes[prod.selected.size].price
+      } else {
+        price = +prod.price
+      }
       return count + price * +prod.count
     }, 0)
   }

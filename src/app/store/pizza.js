@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import pizzaApi from '../../mockData/pizza'
 import { fetchPizza } from '../http/pizzaApi'
 const initialState = {
   enteties: [],
   count: 0,
   isLoading: true,
-  dataLoaded: false,
+  error: null,
 }
 const pizzaSlice = createSlice({
   name: 'pizza',
@@ -48,22 +47,12 @@ const pizzaSlice = createSlice({
 const { reducer: pizzaReducer, actions } = pizzaSlice
 const {
   pizzaRequested,
-  pizzaRecieved,
   pizzaRequestFailed,
   pizzaSelected,
   pizzaCountChanged,
   pizzaNextUploaded,
 } = actions
-export const fetchAllPizza = () => async dispatch => {
-  dispatch(pizzaRequested())
-  try {
-    const data = await pizzaApi.fetchAll()
-    dispatch(pizzaRecieved(data))
-  } catch (error) {
-    console.log(error)
-    dispatch(pizzaRequestFailed(error.message))
-  }
-}
+
 export const uploadPizza =
   ({ currentPage, limit, pizzaFeature, sortingProps }) =>
   async dispatch => {
@@ -78,6 +67,7 @@ export const uploadPizza =
       const { chunk, count } = data
       dispatch(pizzaNextUploaded({ chunk, count }))
     } catch (error) {
+      pizzaRequestFailed(error.message)
       console.log(error)
     }
   }

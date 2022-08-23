@@ -1,13 +1,19 @@
 import { useState } from 'react'
 import './sortingBar.css'
-const SortingBar = ({ setSortingProps, selected, sortCases }) => {
+const SortingBar = ({
+  setSortingProps,
+  selected,
+  sortCases,
+  css,
+  sortStyle,
+}) => {
   const [show, setShow] = useState(false)
   const dropDownClick = value => {
     setShow(false)
     setSortingProps(prevState => ({ ...prevState, prop: value }))
   }
   return (
-    <div className='sorting__bar'>
+    <div className={'sorting__bar d-flex align-items-center ' + css}>
       <span
         className={selected.direction ? 'arrow arrow-up' : 'arrow arrow-down'}
         onClick={() =>
@@ -30,7 +36,7 @@ const SortingBar = ({ setSortingProps, selected, sortCases }) => {
           />
         </svg>
       </span>{' '}
-      Сортировать по:
+      <span style={sortStyle}>Сортировать по:</span>
       <div className='sorting__bar_dropdown'>
         <div
           className='sorting__bar_dropdown-title'
