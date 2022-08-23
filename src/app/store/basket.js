@@ -6,7 +6,7 @@ const initialState = {
     products: {},
   },
 }
-
+const appendPizza = ({ payload, products }) => {}
 const busketSlice = createSlice({
   name: 'busket',
   initialState,
@@ -26,59 +26,83 @@ const busketSlice = createSlice({
           { ...payload, _basketId: nanoid() },
         ]
       } else {
-        let flag = true
-        const newArrayOfProductsWithSameId = products[payload._id].map(prod => {
-          if (prod.type === PRODUCT_PIZZA) {
-            if (
-              JSON.stringify(prod.selected) === JSON.stringify(payload.selected)
-            ) {
-              flag = false
-              return { ...prod, count: prod.count + 1 }
-            } else {
-              return prod
+        if (payload.type === PRODUCT_PIZZA) {
+          let flag = true
+          const newArrayOfProductsWithSameId = products[payload._id].map(
+            prod => {
+              if (prod.type === PRODUCT_PIZZA) {
+                if (
+                  JSON.stringify(prod.selected) ===
+                  JSON.stringify(payload.selected)
+                ) {
+                  flag = false
+                  return { ...prod, count: prod.count + 1 }
+                } else {
+                  return prod
+                }
+              }
             }
+          )
+          if (flag) {
+            newArrayOfProductsWithSameId.push({
+              ...payload,
+              _basketId: nanoid(),
+            })
           }
-        })
-        if (flag) {
-          newArrayOfProductsWithSameId.push({ ...payload, _basketId: nanoid() })
+          state.enteties.products[payload._id] = newArrayOfProductsWithSameId
+        } else {
+          state.enteties.products[payload._id][0].count =
+            products[payload._id][0].count + 1
         }
-        state.enteties.products[payload._id] = newArrayOfProductsWithSameId
       }
     },
     productDeletedFromBasket: (state, action) => {
       const products = state.enteties.products
       const payload = action.payload
-      let flag = null
-      const newArrayOfProductsWithSameId = products[payload._id].map(
-        (prod, i) => {
-          if (prod.type === PRODUCT_PIZZA) {
-            if (
-              JSON.stringify(prod.selected) === JSON.stringify(payload.selected)
-            ) {
-              if (payload.remove) {
-                flag = i
-                return { ...prod, count: prod.count }
-              } else {
-                if (+prod.count === 1) {
+      if (payload.type === PRODUCT_PIZZA) {
+        let flag = null
+        const newArrayOfProductsWithSameId = products[payload._id].map(
+          (prod, i) => {
+            if (prod.type === PRODUCT_PIZZA) {
+              if (
+                JSON.stringify(prod.selected) ===
+                JSON.stringify(payload.selected)
+              ) {
+                if (payload.remove) {
                   flag = i
+                  return { ...prod, count: prod.count }
+                } else {
+                  if (+prod.count === 1) {
+                    flag = i
+                  }
+                  return { ...prod, count: prod.count - 1 }
                 }
-                return { ...prod, count: prod.count - 1 }
+              } else {
+                return prod
               }
-            } else {
-              return prod
             }
           }
+        )
+
+        if (flag !== null) {
+          newArrayOfProductsWithSameId.splice(flag, 1)
         }
-      )
 
-      if (flag !== null) {
-        newArrayOfProductsWithSameId.splice(flag, 1)
-      }
-
-      if (newArrayOfProductsWithSameId.length === 0) {
-        delete state.enteties.products[payload._id]
+        if (newArrayOfProductsWithSameId.length === 0) {
+          delete state.enteties.products[payload._id]
+        } else {
+          state.enteties.products[payload._id] = newArrayOfProductsWithSameId
+        }
       } else {
-        state.enteties.products[payload._id] = newArrayOfProductsWithSameId
+        if (
+          state.enteties.products[payload._id][0].count === 1 ||
+          payload.remove
+        ) {
+          delete state.enteties.products[payload._id]
+        } else {
+          state.enteties.products[payload._id][0].count =
+            products[payload._id][0].count - 1
+        }
       }
     },
   },
