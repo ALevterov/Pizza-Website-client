@@ -39,3 +39,9 @@
   background-color: #fff;
   color: var(--accent-color);
 }
+.product-img {
+  transition: transform 0.15s ease-in-out;
+}
+.product-img:hover {
+  transform: translateY(3px);
+}

@@ -55,6 +55,7 @@ const PizzaPage = () => {
   useEffect(() => {
     dispatch(uploadPizza({ currentPage, limit, pizzaFeature, sortingProps }))
   }, [currentPage, pizzaFeature, sortingProps])
+
   useEffect(() => {
     setCurrentPage(1)
   }, [pizzaFeature, sortingProps])

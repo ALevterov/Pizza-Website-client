@@ -24,7 +24,11 @@ const PizzaCard = ({
   return (
     <div className='col-lg-3 col-md-4 col-sm-6'>
       <div className='card border-0' style={{ width: '90%', height: '100%' }}>
-        <img src={bufferToImage(image)} className='card-img-top' alt='img' />
+        <img
+          src={bufferToImage(image)}
+          className='card-img-top product-img'
+          alt='img'
+        />
         <div className='card-body d-flex flex-column justify-content-between'>
           <div>
             {' '}

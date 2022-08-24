@@ -29,6 +29,9 @@
   align-items: center;
   color: rgba(255, 255, 255, 0.8);
   font-size: 7rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
 }
 
 /* кнопки влево и вправо */
@@ -110,7 +113,7 @@
   margin-right: 3px;
   margin-left: 3px;
   text-indent: -999px;
-  background-color: rgb(255 255 255 / 50%);
+  background-color: #babbbf;
   background-clip: padding-box;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
@@ -118,5 +121,5 @@
 }
 
 .slider__indicators li.active {
-  background-color: rgb(255 255 255 / 90%);
+  background-color: #3c3c3c;
 }

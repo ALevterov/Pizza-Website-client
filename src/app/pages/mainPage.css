@@ -1,3 +1,6 @@
 .card-body {
   bottom: 0;
 }
+.spinner-container {
+  height: 250px;
+}

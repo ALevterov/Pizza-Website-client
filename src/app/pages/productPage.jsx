@@ -29,15 +29,18 @@ const ProductPage = ({ type }) => {
   ]
 
   const count = useSelector(getProductsCount({ type }))
+
   const limit = 4
   // const offset = limit * currentPage - limit
 
   const pagesCount = Math.ceil(count / limit)
+
   const pages = new Array(pagesCount).fill('')
 
   useEffect(() => {
     dispatch(uploadProducts({ currentPage, limit, sortingProps, type }))
   }, [currentPage, sortingProps])
+
   useEffect(() => {
     setCurrentPage(1)
   }, [sortingProps])

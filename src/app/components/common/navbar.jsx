@@ -1,13 +1,17 @@
 import { NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getAllBasketProductsCount, getTotalPrice } from '../../store/basket'
 import './navbar.css'
 import { useRef, useState } from 'react'
+import { clearUser, getUserAuthState, getUserRole } from '../../store/user'
 const Navbar = ({ setActive }) => {
   const totalProductsCount = useSelector(getAllBasketProductsCount())
   const totalPrice = useSelector(getTotalPrice())
   const navbarRef = useRef(null)
   const [activePage, setActivePage] = useState(null)
+
+  const isAuth = useSelector(getUserAuthState())
+  const role = useSelector(getUserRole())
   window.addEventListener('scroll', () => {
     let ticking = false
 
@@ -24,6 +28,11 @@ const Navbar = ({ setActive }) => {
       })
     }
   })
+  const dispatch = useDispatch()
+  const logOut = () => {
+    dispatch(clearUser())
+    localStorage.removeItem('access_token')
+  }
   return (
     <div
       className='container-fluid navbar-shadow navbar__container'
@@ -36,7 +45,7 @@ const Navbar = ({ setActive }) => {
             <NavLink
               className='navbar__brand-link'
               to='/'
-              onClick={() => setActive('main')}
+              onClick={() => setActivePage('main')}
             >
               Супер пицца
             </NavLink>
@@ -89,8 +98,40 @@ const Navbar = ({ setActive }) => {
               </li>
             </ul>
           </div>
-          <div className='d-flex '>
-            <button className='navbar__sign-in_btn'>Войти</button>
+          <div className='d-flex align-items-center'>
+            {isAuth ? (
+              role === 'ADMIN' ? (
+                <>
+                  <NavLink className='navbar__sign-in_btn' to={'/admin'}>
+                    Админ панель
+                  </NavLink>{' '}
+                  |{' '}
+                  <button
+                    className='navbar__sign-in_btn'
+                    onClick={() => logOut()}
+                  >
+                    Выйти
+                  </button>
+                </>
+              ) : (
+                <>
+                  <NavLink className='navbar__sign-in_btn' to={'/profile'}>
+                    Профиль
+                  </NavLink>{' '}
+                  |{' '}
+                  <button
+                    className='navbar__sign-in_btn'
+                    onClick={() => logOut()}
+                  >
+                    Выйти
+                  </button>
+                </>
+              )
+            ) : (
+              <NavLink className='navbar__sign-in_btn' to={'/login'}>
+                Войти
+              </NavLink>
+            )}
             <div
               className='navbar__basket_btn ms-3'
               type='submit'

@@ -1,0 +1,15 @@
+.intro-card .card-body {
+  background-color: #3c3c3c7e;
+  width: 100%;
+}
+.intro-card.card:hover {
+  cursor: pointer;
+  transform: translateY(3px);
+}
+.intro-card.card {
+  transition: transform 0.15s ease-in-out;
+}
+.intro-card .card-body .card-text {
+  color: #fff;
+  opacity: 1;
+}

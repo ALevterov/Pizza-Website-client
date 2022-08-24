@@ -36,23 +36,3 @@
     max-width: 33.3333333333%;
   }
 }
-
-.slider__item:nth-child(1) {
-  background-color: #f44336;
-}
-
-.slider__item:nth-child(2) {
-  background-color: #9c27b0;
-}
-
-.slider__item:nth-child(3) {
-  background-color: #3f51b5;
-}
-
-.slider__item:nth-child(4) {
-  background-color: #03a9f4;
-}
-
-.slider__item:nth-child(5) {
-  background-color: #4caf50;
-}
