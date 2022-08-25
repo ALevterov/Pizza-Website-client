@@ -18,3 +18,6 @@ export const PIZZA_VEGAN = 'vegan'
 export const PIZZA_GRILL = 'grill'
 export const PIZZA_SPICY = 'spicy'
 export const PIZZA_CLOSED = 'closed'
+
+export const ADMIN = 'ADMIN'
+export const ACCESS_TOKEN = 'access_token'

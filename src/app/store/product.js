@@ -85,7 +85,7 @@ export const changeProductCount = payload => dispatch =>
 export const getProductById =
   ({ type, _id }) =>
   state =>
-    state.products.enteties[type].find(p => p._id === _id)
+    state.products.enteties[type]?.find(p => p._id === _id)
 
 export const getProductsCount =
   ({ type }) =>

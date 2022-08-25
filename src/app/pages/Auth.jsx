@@ -22,12 +22,10 @@ const Auth = () => {
         const { data } = await login({ email, password })
         localStorage.setItem('access_token', data)
         user = await jwt_decode(data)
-        console.log(user)
       } else {
         const { data } = await registration({ email, password })
         localStorage.setItem('access_token', data)
         user = await jwt_decode(data)
-        console.log(user)
       }
       dispatch(setUserData(user))
       navigate('/')
@@ -41,7 +39,6 @@ const Auth = () => {
       return { ...prevState, [target.name]: target.value }
     })
   }
-  console.log(authData)
   return (
     <div
       className='auth__form container d-flex justify-content-center align-items-center'

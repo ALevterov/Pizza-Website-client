@@ -9,6 +9,7 @@ import DrinksPage from './pages/drinksPage'
 import DessertsPage from './pages/dessertsPage'
 import Footer from './components/common/footer'
 import Auth from './pages/Auth'
+import EditItemPage from './components/admin/editItemPage'
 
 function App() {
   const [modalActive, setModalActive] = useState(false)
@@ -21,9 +22,21 @@ function App() {
           <Navbar setActive={setModalActive} />
           <Routes>
             <Route path='/' element={<MainPage />}></Route>
-            <Route path='/pizza' element={<PizzaPage />}></Route>
-            <Route path='/drinks' element={<DrinksPage />}></Route>
-            <Route path='/desserts' element={<DessertsPage />}></Route>
+            <Route path='/pizza/' element={<PizzaPage />}></Route>
+            <Route
+              path='/pizza/:id'
+              element={<EditItemPage type={'pizza'} />}
+            ></Route>
+            <Route path='/drinks/' element={<DrinksPage />}></Route>
+            <Route
+              path='/drinks/:id'
+              element={<EditItemPage type={'drinks'} />}
+            ></Route>
+            <Route path='/desserts/' element={<DessertsPage />}></Route>
+            <Route
+              path='/desserts/:id'
+              element={<EditItemPage type={'desserts'} />}
+            ></Route>
             <Route path='/login' element={<Auth />}></Route>
             <Route path='/registration' element={<Auth />}></Route>
             <Route path='*' element={<Navigate to='/' replace />} />

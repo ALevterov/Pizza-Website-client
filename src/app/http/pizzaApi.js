@@ -5,6 +5,23 @@ export const createPizza = async data => {
   // const response = await $authHost.post('api/pizza', {...data})
   // return response
 }
+export const changePizzaData = async ({ data, id }) => {
+  try {
+    const formData = new FormData()
+    Object.keys(data).forEach((key, i) => {
+      let item = data[key]
+      if (typeof data[key] === 'object' && key !== 'image') {
+        item = JSON.stringify(item)
+      }
+      formData.append(key, item)
+    })
+    const response = await $authHost.put('api/pizza', formData)
+    return response
+  } catch (error) {
+    console.log(error)
+    alert(error.message)
+  }
+}
 export const fetchPizza = async ({
   page,
   limit,

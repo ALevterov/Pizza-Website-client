@@ -4,6 +4,9 @@ import { getPizzaById } from '../../store/pizza'
 import PizzaOptionsBlock from './pizzaOptionsBlock'
 import { bufferToImage } from '../../utils/bufferToImage'
 import './pizzaCard.css'
+import { getUserRole } from '../../store/user'
+import { ADMIN } from '../../utils/consts'
+import EditItem from '../admin/editItem'
 const PizzaCard = ({
   title,
   description,
@@ -20,10 +23,15 @@ const PizzaCard = ({
   const handleAdd = () => {
     dispatch(addProductToBasket({ ...pizza, count: 1 }))
   }
-  bufferToImage(image)
+  const role = useSelector(getUserRole())
+
   return (
     <div className='col-lg-3 col-md-4 col-sm-6'>
-      <div className='card border-0' style={{ width: '90%', height: '100%' }}>
+      <div
+        className='card border-0 position-relative'
+        style={{ width: '90%', height: '100%' }}
+      >
+        {role === ADMIN && <EditItem id={_id} />}
         <img
           src={bufferToImage(image)}
           className='card-img-top product-img'

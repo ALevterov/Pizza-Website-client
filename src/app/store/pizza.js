@@ -41,6 +41,20 @@ const pizzaSlice = createSlice({
         }
       })
     },
+    pizzaChanged: (state, action) => {
+      const { _id } = action.payload
+      // console.log(action.payload)
+      const index = state.enteties.findIndex(p => p._id === _id)
+      state.enteties[index] = Object.assign({}, action.payload)
+      // console.log(index)
+      // state.enteties = state.enteties.map(pizza => {
+      //   if (pizza._id === _id) {
+      //     return { ...action.payload }
+      //   } else {
+      //     return pizza
+      //   }
+      // })
+    },
   },
 })
 
@@ -51,6 +65,7 @@ const {
   pizzaSelected,
   pizzaCountChanged,
   pizzaNextUploaded,
+  pizzaChanged,
 } = actions
 
 export const uploadPizza =
@@ -86,4 +101,7 @@ export const getPizzaById = id => state =>
   state.pizza.enteties.find(p => p._id === id)
 
 export const getPizzaCount = () => state => state.pizza.count
+export const changePizza = payload => dispatch => {
+  dispatch(pizzaChanged(payload))
+}
 export default pizzaReducer

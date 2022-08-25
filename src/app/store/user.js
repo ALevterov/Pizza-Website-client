@@ -11,7 +11,6 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     userDataRecieved: (state, action) => {
-      console.log(action.payload)
       const { email, role } = action.payload
       state.email = email
       state.role = role

@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductToBasket, getProductCount } from '../../store/basket'
 import { getProductById } from '../../store/product'
+import { getUserRole } from '../../store/user'
 import { bufferToImage } from '../../utils/bufferToImage'
+import { ADMIN } from '../../utils/consts'
+import EditItem from '../admin/editItem'
 
 const ProductCard = ({ title, description, image, price, _id, type }) => {
   const product = useSelector(getProductById({ _id, type }))
@@ -10,9 +13,14 @@ const ProductCard = ({ title, description, image, price, _id, type }) => {
   const handleAdd = () => {
     dispatch(addProductToBasket({ ...product, count: 1 }))
   }
+  const role = useSelector(getUserRole())
   return (
     <div className='col-lg-3 col-md-4 col-sm-6'>
-      <div className='card border-0' style={{ width: '90%', height: '100%' }}>
+      <div
+        className='card border-0 position-relative'
+        style={{ width: '90%', height: '100%' }}
+      >
+        {role === ADMIN && <EditItem id={_id} />}
         <img src={bufferToImage(image)} className='card-img-top' alt='img' />
         <div className='card-body d-flex flex-column justify-content-between'>
           <div>
