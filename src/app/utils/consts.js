@@ -10,8 +10,8 @@ export const DOUGH_THIN = 'thin'
 export const DOUGH_THICK = 'thick'
 
 export const PRODUCT_PIZZA = 'pizza'
-export const PRODUCT_DRINK = 'pizza'
-export const PRODUCT_DESSERT = 'pizza'
+export const PRODUCT_DRINK = 'drink'
+export const PRODUCT_DESSERT = 'dessert'
 
 export const PIZZA_MEAT = 'meat'
 export const PIZZA_VEGAN = 'vegan'

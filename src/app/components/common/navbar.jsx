@@ -37,6 +37,9 @@ const Navbar = ({ setActive }) => {
     <div
       className='container-fluid navbar-shadow navbar__container'
       ref={navbarRef}
+      style={{
+        zIndex: 1000,
+      }}
     >
       <div className='container'>
         <nav className='navbar d-flex justify-content-between flex-row align-items-center'>
@@ -115,10 +118,6 @@ const Navbar = ({ setActive }) => {
                 </>
               ) : (
                 <>
-                  <NavLink className='navbar__sign-in_btn' to={'/profile'}>
-                    Профиль
-                  </NavLink>{' '}
-                  |{' '}
                   <button
                     className='navbar__sign-in_btn'
                     onClick={() => logOut()}

@@ -118,7 +118,12 @@ const Basket = ({ active, setActive }) => {
     return num + ' товаров'
   }
   return (
-    <div className='modal__window'>
+    <div
+      className='modal__window'
+      style={{
+        zIndex: 10000,
+      }}
+    >
       <div
         ref={shadeRef}
         className='modal__shade'

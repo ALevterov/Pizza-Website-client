@@ -10,6 +10,7 @@ import DessertsPage from './pages/dessertsPage'
 import Footer from './components/common/footer'
 import Auth from './pages/Auth'
 import EditItemPage from './components/admin/editItemPage'
+import AdminPage from './components/admin/adminPage'
 
 function App() {
   const [modalActive, setModalActive] = useState(false)
@@ -39,6 +40,7 @@ function App() {
             ></Route>
             <Route path='/login' element={<Auth />}></Route>
             <Route path='/registration' element={<Auth />}></Route>
+            <Route path='/admin' element={<AdminPage />}></Route>
             <Route path='*' element={<Navigate to='/' replace />} />
           </Routes>
         </div>

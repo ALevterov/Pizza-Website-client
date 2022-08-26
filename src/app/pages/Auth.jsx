@@ -66,7 +66,7 @@ const Auth = () => {
           <input
             type='password'
             className='form-control mt-3'
-            placeholder='Введите пароль'
+            placeholder='Пароль для админки: admin322'
             name='password'
             onChange={e => onInputChange(e)}
           />

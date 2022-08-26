@@ -60,4 +60,29 @@ svg path {
   padding: 10px 20px;
   font-size: 16px;
   text-align: center;
+  background-color: #fff;
+  border: 2px solid #000;
+  transition: all 0.3s ease;
+}
+.btn_cancel:hover {
+  color: #fff;
+  background-color: #000;
+}
+.btn_delete {
+  border: none;
+  outline: none;
+  border-radius: 30px;
+
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+
+  color: red;
+  border: 2px solid red;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+.btn_delete:hover {
+  color: #fff;
+  background-color: red;
 }

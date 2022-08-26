@@ -59,7 +59,7 @@ const ProductPage = ({ type }) => {
             sortStyle={{ paddingTop: '1px' }}
           />
         </div>
-        <div className='card-group align-items-stretch'>
+        <div className='card-group align-items-stretch mt-4'>
           {!isLoadingProducts ? (
             sortedProducts.map(p => {
               return <ProductCard key={p._id} {...p} />
