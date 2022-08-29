@@ -61,6 +61,7 @@ const EditPizzaForm = ({
         onChange={e => onInputChange(e)}
         name='image'
         id='image'
+        accept='image/*'
       />
       {url ? (
         <img className='mt-3' src={url} alt='картинка' />
@@ -73,44 +74,80 @@ const EditPizzaForm = ({
           />
         )
       )}
-      <label htmlFor='small' className='form-label mt-3'>
-        Маленький размер
+      <label htmlFor='small_diametr' className='form-label mt-3'>
+        Маленький размер - Диаметр
       </label>
 
       <input
         className='form-control'
         type='text'
-        name='small'
-        id='small'
-        value={item.sizes.small.diametr + ' ' + item.sizes.small.price}
+        name='small_diametr'
+        id='small_diametr'
+        value={item.sizes.small.diametr}
         onChange={e => onInputChange(e)}
         key={3}
       />
-      <label htmlFor='medium' className='form-label mt-3'>
-        Средний размер
+      <label htmlFor='small_price' className='form-label mt-3'>
+        Маленький размер - Цена
       </label>
-
       <input
         className='form-control'
         type='text'
-        name='medium'
-        id='medium'
-        value={item.sizes.medium.diametr + ' ' + item.sizes.medium.price}
+        name='small_price'
+        id='small_price'
+        value={item.sizes.small.price}
         onChange={e => onInputChange(e)}
         key={4}
       />
-      <label htmlFor='large' className='form-label mt-3'>
-        Большой размер
+      <label htmlFor='medium_diametr' className='form-label mt-5'>
+        Средний размер - Диаметр
       </label>
 
       <input
         className='form-control'
         type='text'
-        name='large'
-        id='large'
-        value={item.sizes.large.diametr + ' ' + item.sizes.large.price}
+        name='medium_diametr'
+        id='medium_diametr'
+        value={item.sizes.medium.diametr}
         onChange={e => onInputChange(e)}
         key={5}
+      />
+      <label htmlFor='medium_price' className='form-label mt-3'>
+        Средний размер - Цена
+      </label>
+      <input
+        className='form-control'
+        type='text'
+        name='medium_price'
+        id='medium_price'
+        value={item.sizes.medium.price}
+        onChange={e => onInputChange(e)}
+        key={6}
+      />
+      <label htmlFor='large_diametr' className='form-label mt-5'>
+        Большой размер - Диаметр
+      </label>
+
+      <input
+        className='form-control'
+        type='text'
+        name='large_diametr'
+        id='large_diametr'
+        value={item.sizes.large.diametr}
+        onChange={e => onInputChange(e)}
+        key={7}
+      />
+      <label htmlFor='large_price' className='form-label mt-3'>
+        Большой размер - Цена
+      </label>
+      <input
+        className='form-control'
+        type='text'
+        name='large_price'
+        id='large_price'
+        value={item.sizes.large.price}
+        onChange={e => onInputChange(e)}
+        key={8}
       />
       <div className='d-flex justify-content-between mt-3'>
         <button

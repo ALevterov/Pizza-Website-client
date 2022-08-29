@@ -31,25 +31,41 @@ const EditItemPage = ({ type }) => {
   const [url, setUrl] = useState(null)
   const onInputChange = ({ target }) => {
     const { name, value } = target
-    if (name === 'features') {
-      return setItem(prevState => ({ ...prevState, [name]: value.split(' ') }))
+    const size = name.split('_')[0]
+    const selector = name.split('_')[1]
+    console.log(size, selector)
+    if (type === PRODUCT_PIZZA) {
+      if (name === 'features') {
+        return setItem(prevState => ({
+          ...prevState,
+          [name]: value.split(' '),
+        }))
+      }
+      if (size === 'small' || size === 'medium' || size === 'large') {
+        return setItem(prevState => ({
+          ...prevState,
+          sizes: {
+            ...prevState.sizes,
+            [size]: { ...prevState.sizes[size], [selector]: value },
+          },
+        }))
+      }
+      if (name === 'image') {
+        const file = target.files[0]
+        setItem(prevState => ({ ...prevState, [name]: file }))
+        return setUrl(URL.createObjectURL(file))
+      }
+      setItem(prevState => ({ ...prevState, [name]: value }))
+    } else {
+      if (name === 'image') {
+        const file = target.files[0]
+        setItem(prevState => ({ ...prevState, [name]: file }))
+        return setUrl(URL.createObjectURL(file))
+      }
+      setItem(prevState => ({ ...prevState, [name]: value }))
     }
-    if (name === 'small' || name === 'medium' || name === 'large') {
-      return setItem(prevState => ({
-        ...prevState,
-        sizes: {
-          ...prevState.sizes,
-          [name]: { diametr: value.split(' ')[0], price: value.split(' ')[1] },
-        },
-      }))
-    }
-    if (name === 'image') {
-      const file = target.files[0]
-      setItem(prevState => ({ ...prevState, [name]: file }))
-      return setUrl(URL.createObjectURL(file))
-    }
-    setItem(prevState => ({ ...prevState, [name]: value }))
   }
+
   const onSave = async () => {
     try {
       if (type === PRODUCT_PIZZA) {
@@ -83,7 +99,7 @@ const EditItemPage = ({ type }) => {
       console.log(error)
     }
   }
-
+  console.log(item)
   return (
     <div className='d-flex justify-content-center align-items-center h-100'>
       <div

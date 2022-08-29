@@ -1,0 +1,27 @@
+@media (max-width: 1200px) {
+  .page__container {
+    margin-bottom: 20px;
+  }
+  .navbar {
+    font-size: 12px;
+    padding: 0.5rem 20px;
+  }
+  .navbar__basket_btn {
+    padding: 8px 16px;
+  }
+  .navbar__basket_btn .navbar__svg,
+  .navbar__basket_btn svg {
+    margin-top: -2px;
+  }
+  .card,
+  .card-img-top {
+    height: 150px;
+  }
+  .card-text {
+    font-size: 10px;
+  }
+  .footer {
+    height: 60px;
+    font-size: 12px;
+  }
+}

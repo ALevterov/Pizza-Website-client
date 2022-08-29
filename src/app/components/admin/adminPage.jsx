@@ -57,6 +57,9 @@ const AdminPage = () => {
   }, [])
   const onInputChange = ({ target }) => {
     const { name, value } = target
+    const size = name.split('_')[0]
+    const selector = name.split('_')[1]
+    console.log(size, selector)
     if (itemType === PRODUCT_PIZZA) {
       if (name === 'features') {
         return setPizzaItem(prevState => ({
@@ -64,15 +67,12 @@ const AdminPage = () => {
           [name]: value.split(' '),
         }))
       }
-      if (name === 'small' || name === 'medium' || name === 'large') {
+      if (size === 'small' || size === 'medium' || size === 'large') {
         return setPizzaItem(prevState => ({
           ...prevState,
           sizes: {
             ...prevState.sizes,
-            [name]: {
-              diametr: value.split(' ')[0],
-              price: value.split(' ')[1],
-            },
+            [size]: { ...prevState.sizes[size], [selector]: value },
           },
         }))
       }
@@ -91,6 +91,7 @@ const AdminPage = () => {
       setProductItem(prevState => ({ ...prevState, [name]: value }))
     }
   }
+
   const onSave = async ({ productType }) => {
     try {
       if (productType === PRODUCT_PIZZA) {

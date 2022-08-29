@@ -50,6 +50,7 @@ const EditProductForm = ({
         onChange={e => onInputChange(e)}
         name='image'
         id='image'
+        accept='image/*'
       />
       {url ? (
         <img className='mt-3' src={url} alt='картинка' />
