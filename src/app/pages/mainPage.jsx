@@ -31,10 +31,7 @@ const MainPage = () => {
   const introCardsIsLoading = useSelector(getIntroCardsLoadingState())
   const to = ['/pizza', '/drinks', '/desserts']
   return (
-    <>
-      {/* <div className='container mt-4 mb-4'>
-        <h2>Акции и скидки:</h2>
-      </div> */}
+    <div className='main-page__wrapper'>
       {!isLoading ? (
         <Slider cards={stocks} />
       ) : (
@@ -60,7 +57,7 @@ const MainPage = () => {
               })}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

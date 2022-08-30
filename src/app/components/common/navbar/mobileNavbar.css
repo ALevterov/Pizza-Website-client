@@ -1,0 +1,87 @@
+.mobile-container {
+  max-width: none !important;
+  width: 100%;
+}
+.navbar.navbar-mobile {
+  padding: 0;
+  margin: 0;
+  height: 40px;
+  justify-content: space-between;
+}
+.navbar.navbar-mobile .navbar__brand-link {
+  font-size: 10px;
+}
+.navbar.navbar-mobile .navbar__basket_btn {
+  font-size: 10px;
+  padding: 8px 16px;
+  margin: 0;
+}
+.burger-btn {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  position: relative;
+  cursor: pointer;
+  z-index: 1100;
+}
+.burger-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 20px;
+  background-color: #000;
+  height: 2px;
+  border-radius: 4px;
+}
+.burger-btn span {
+  position: absolute;
+  top: 9px;
+  width: 20px;
+  background-color: #000;
+  height: 2px;
+  border-radius: 4px;
+}
+.burger-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  background-color: #000;
+  height: 2px;
+  border-radius: 4px;
+}
+.navbar__pages-mobile {
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  /* display: none; */
+  width: 100px;
+  right: -30px;
+  top: 40px;
+  transform: translateX(100px);
+  transition: transform 0.3s ease;
+}
+.navbar__pages-mobile.active {
+  /* display: block; */
+  transform: translateX(0);
+}
+.navbar__pages-mobile .navbar__pages_list {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.navbar__pages-mobile .navbar__pages_list-item {
+  text-align: center;
+  margin-top: 6px;
+}
+.navbar__pages-mobile .navbar__pages_list-link {
+  margin: 0;
+}
+.navbar__pages-mobile .navbar_btn-mobile {
+  display: flex;
+  justify-content: center;
+}

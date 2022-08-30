@@ -17,7 +17,7 @@ const ProductCard = ({ title, description, image, price, _id, type }) => {
   return (
     <div className='col-lg-3 col-md-4 col-sm-6'>
       <div
-        className='card border-0 position-relative'
+        className='card border-0 position-relative pizza_card'
         style={{ width: '90%', height: '100%' }}
       >
         {role === ADMIN && <EditItem id={_id} />}

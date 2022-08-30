@@ -13,11 +13,7 @@ const EmptyBasket = ({ setActive }) => {
   return (
     <div className='modal__basket_empty h-100'>
       <div className='p-4 d-flex justify-content-center align-items-center flex-column text-center h-100'>
-        <img
-          src={emptyBasket}
-          alt='empty basket'
-          style={{ width: '308px', height: 'auto' }}
-        />
+        <img src={emptyBasket} alt='empty basket' className='empty_image' />
         <h4 className='mt-4'>Корзина пустая!</h4>
         <div className='modal__basket_empty_text m-2 px-3'>
           Ваша корзина пуста, выберите понравившийся товар и добавьте в корзину.

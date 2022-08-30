@@ -66,7 +66,7 @@ const PizzaPage = () => {
     return (
       <div className='container mt-4'>
         <div className='row d-flex justify-content-between'>
-          <div className='d-flex justify-content-around flex-row w-auto'>
+          <div className='product-features d-flex justify-content-around flex-row w-auto'>
             {filterCases.map(item => {
               return (
                 <div

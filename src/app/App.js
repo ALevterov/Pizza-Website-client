@@ -1,5 +1,5 @@
 import './App.css'
-import Navbar from './components/common/navbar'
+import Navbar from './components/common/navbar/navbar'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import PizzaPage from './pages/pizzaPage'
 import MainPage from './pages/mainPage'

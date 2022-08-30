@@ -26,7 +26,7 @@ const PizzaCard = ({
   const role = useSelector(getUserRole())
 
   return (
-    <div className='col-lg-3 col-md-4 col-sm-6'>
+    <div className='col-lg-3 col-md-4 col-sm-6 pizza_card'>
       <div
         className='card border-0 position-relative'
         style={{ width: '90%', height: '100%' }}

@@ -1,3 +1,25 @@
+@media (min-width: 1600px) {
+  .main-page__wrapper {
+    padding-top: 80px;
+  }
+
+  .card-text {
+    font-size: 16px;
+  }
+  .page__container {
+    margin-bottom: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-text {
+    font-size: 14px;
+  }
+  .page__container {
+    margin-bottom: 30px;
+  }
+}
+
 @media (max-width: 1200px) {
   .page__container {
     margin-bottom: 20px;
@@ -13,15 +35,95 @@
   .navbar__basket_btn svg {
     margin-top: -2px;
   }
-  .card,
-  .card-img-top {
+  .intro-card.card,
+  .intro-card .card-img-top {
     height: 150px;
   }
-  .card-text {
-    font-size: 10px;
+  .intro-card .card-text {
+    font-size: 10px !important;
   }
   .footer {
     height: 60px;
     font-size: 12px;
   }
+  /* pizza card */
+  .pizza_card {
+    font-size: 12px;
+  }
+  .pizza_card .card-title {
+    font-size: 14px !important;
+  }
+  .product__btn_add {
+    font-size: 10px !important;
+    padding: 0.15rem 0.45rem !important;
+  }
+  .pizza__card_price {
+    font-size: 1rem !important;
+  }
+  .pizza_card .card-text {
+    font-size: 11px !important;
+  }
+  /* pizza page */
+  .pizza__filter_item {
+    font-size: 14px !important;
+  }
+  .sorting__bar,
+  .sorting__bar_dropdown-title {
+    font-size: 12px !important;
+  }
+  h2 {
+    font-size: 24px !important;
+  }
+
+  .pagination-item {
+    font-size: 13px !important;
+    width: 24px;
+    height: 24px;
+  }
+  .button-arrow {
+    height: 20px;
+    width: 20px;
+  }
+}
+@media (max-width: 900px) {
+  .pizza__filter_item {
+    font-size: 10px !important;
+  }
+  .sorting__bar,
+  .sorting__bar_dropdown-title {
+    font-size: 10px !important;
+  }
+  h2 {
+    font-size: 18px !important;
+  }
+  .arrow-up svg {
+    width: 8px;
+    height: 5px;
+  }
+  .modal__basket,
+  .modal__basket.active {
+    width: 300px;
+  }
+  .modal__basket_empty_text {
+    font-size: 12px !important;
+  }
+  h4 {
+    font-size: 14px !important;
+  }
+  .empty_image {
+    width: 200px !important;
+  }
+
+  .navbar__basket_btn {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+  .modal__shade.active .btn_close {
+    right: 300px !important;
+  }
+  .modal__shade .btn_close {
+    right: -100px !important;
+  }
+}
+@media (max-width: 780px) {
 }

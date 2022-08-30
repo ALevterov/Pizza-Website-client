@@ -44,7 +44,7 @@
 }
 
 .modal__basket.active {
-  transform: translateX(0px);
+  transform: translateX(0px) !important;
 }
 
 .modal__basket_empty_text {
@@ -181,4 +181,9 @@
 }
 .modal__shade .btn_close {
   right: -100px;
+}
+
+.empty_image {
+  width: 308px;
+  height: auto;
 }
