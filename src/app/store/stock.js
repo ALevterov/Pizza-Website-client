@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchProducts } from '../http/productApi'
 import { fetchStocks } from '../http/stockApi'
 const initialState = {
   enteties: [],

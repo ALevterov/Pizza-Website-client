@@ -1,5 +1,4 @@
 import { $authHost, $host } from '.'
-import jwt_decode from 'jwt-decode'
 
 export const createStock = async data => {
   // const response = await $authHost.post('api/pizza', {...data})

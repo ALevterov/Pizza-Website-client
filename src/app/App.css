@@ -59,7 +59,8 @@ svg path {
   border-radius: 30px;
 
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: bold;
   text-align: center;
   background-color: #fff;
   border: 2px solid #000;

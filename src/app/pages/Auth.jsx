@@ -74,12 +74,12 @@ const Auth = () => {
 
         <div className='mt-3 d-flex justify-content-between flex-row align-items-center mb-2'>
           {isLogin ? (
-            <div>
+            <div className='login_bar'>
               Нет аккаунта?{'  '}
               <NavLink to={'/registration'}>Регистрация</NavLink>
             </div>
           ) : (
-            <div>
+            <div className='login_bar'>
               Есть аккаунт?{'  '}
               <NavLink to={'/login'}>Авторизация</NavLink>
             </div>

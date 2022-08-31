@@ -1,8 +1,9 @@
+import { useMemo } from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { changePizzaData, createPizza } from '../../http/pizzaApi'
-import { changeProductData, createProduct } from '../../http/productApi'
+import { createPizza } from '../../http/pizzaApi'
+import { createProduct } from '../../http/productApi'
 import { changePizza } from '../../store/pizza'
 import { getUserRole } from '../../store/user'
 import {
@@ -18,48 +19,51 @@ import EditProductForm from './EditProductForm'
 const AdminPage = () => {
   const [itemType, setItemType] = useState(null)
   const [url, setUrl] = useState(null)
-  const [productType, setproductType] = useState(null)
+  const productType = null
   const role = useSelector(getUserRole())
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const pizzaInitialState = {
-    sizes: {
-      small: {
-        diametr: 'diametr',
-        price: 'price',
+  const pizzaInitialState = useMemo(
+    () => ({
+      sizes: {
+        small: {
+          diametr: 'diametr',
+          price: 'price',
+        },
+        medium: {
+          diametr: 'diametr',
+          price: 'price',
+        },
+        large: {
+          diametr: 'diametr',
+          price: 'price',
+        },
       },
-      medium: {
-        diametr: 'diametr',
-        price: 'price',
+      dough: {
+        thin: DOUGH_THIN,
+        thick: DOUGH_THICK,
       },
-      large: {
-        diametr: 'diametr',
-        price: 'price',
+      selected: {
+        size: PIZZA_MEDIUM_SIZE,
+        dough: DOUGH_THIN,
       },
-    },
-    dough: {
-      thin: DOUGH_THIN,
-      thick: DOUGH_THICK,
-    },
-    selected: {
-      size: PIZZA_MEDIUM_SIZE,
-      dough: DOUGH_THIN,
-    },
-    features: [],
-  }
+      features: [],
+    }),
+    []
+  )
   const [pizzaItem, setPizzaItem] = useState(pizzaInitialState)
   const [productItem, setProductItem] = useState({})
   useEffect(() => {
     if (role !== ADMIN) {
       navigate(`/`)
     }
-  }, [])
+  }, [role, navigate])
   const onInputChange = ({ target }) => {
     const { name, value } = target
     const size = name.split('_')[0]
     const selector = name.split('_')[1]
-    console.log(size, selector)
+
     if (itemType === PRODUCT_PIZZA) {
       if (name === 'features') {
         return setPizzaItem(prevState => ({
@@ -114,7 +118,7 @@ const AdminPage = () => {
 
   return (
     <div>
-      <div className='d-flex justify-content-center align-items-center h-100'>
+      <div className='admin__page d-flex justify-content-center align-items-center h-100'>
         <div
           className='card mt-5 p-3 px-4 mb-5'
           style={{

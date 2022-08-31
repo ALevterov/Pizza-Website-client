@@ -6,77 +6,10 @@ import {
   getTotalPrice,
 } from '../../store/basket'
 import './basket.css'
-import emptyBasket from '../../assets/emptyBasket.svg'
 import BasketItem from './basketItem'
-
-const EmptyBasket = ({ setActive }) => {
-  return (
-    <div className='modal__basket_empty h-100'>
-      <div className='p-4 d-flex justify-content-center align-items-center flex-column text-center h-100'>
-        <img src={emptyBasket} alt='empty basket' className='empty_image' />
-        <h4 className='mt-4'>Корзина пустая!</h4>
-        <div className='modal__basket_empty_text m-2 px-3'>
-          Ваша корзина пуста, выберите понравившийся товар и добавьте в корзину.
-          Мы доставим ваш заказ бесплатно от 700 ₽.
-        </div>
-        <button
-          className='navbar__basket_btn mt-1'
-          onClick={() => setActive(false)}
-        >
-          Вернуться в меню
-        </button>
-      </div>
-    </div>
-  )
-}
-const BasketFooter = ({ productCount, totalPrice }) => {
-  return (
-    <section className='basket__footer d-flex flex-column'>
-      <div className='basket__footer_total flex-column'>
-        <div className='basket__footer_total_block d-flex justify-content-between'>
-          <div className='basket__footer_total_block_left'>
-            {`${productCount} товар`}
-          </div>
-          <div className='basket__footer_total_block_right'>
-            {`${totalPrice} ₽`}
-          </div>
-        </div>
-        <div className='basket__footer_block_delivery d-flex justify-content-between'>
-          <div className='basket__footer_total_block_left'>Доставка</div>
-          <div className='basket__footer_total_block_right'>
-            {+totalPrice >= 700 ? 'бесплатно' : '150 ₽'}
-          </div>
-        </div>
-      </div>
-      <div className='basket__footer_sum '>
-        <div className='basket__footer_sum_block'>
-          <div className='basket__footer_sum_block_left'>Сумма заказа</div>
-          <div className='basket__footer_sum_block_right'>
-            {`${totalPrice >= 700 ? totalPrice : totalPrice + 150} ₽`}
-          </div>
-        </div>
-      </div>
-      <button className='btn_accent position-relative'>
-        К оформлению заказа
-        <svg
-          width='24'
-          height='24'
-          viewBox='0 0 24 24'
-          fill='none'
-          className='button-arrow'
-        >
-          <path
-            d='M10 18l6-6-6-6'
-            stroke='#fff'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          ></path>
-        </svg>
-      </button>
-    </section>
-  )
-}
+import BasketFooter from './basketFooter'
+import EmptyBasket from './emptyBasket'
+import transformTitle from '../../utils/transformTitle'
 
 const Basket = ({ active, setActive }) => {
   const productCount = useSelector(getAllBasketProductsCount())
@@ -104,15 +37,6 @@ const Basket = ({ active, setActive }) => {
   const shadeRef = useRef()
   const basketRef = useRef()
 
-  const transformTitle = num => {
-    if (num === 1) {
-      return num + ' товар'
-    }
-    if (num > 1 && num < 5) {
-      return num + ' товара'
-    }
-    return num + ' товаров'
-  }
   return (
     <div
       className='modal__window'

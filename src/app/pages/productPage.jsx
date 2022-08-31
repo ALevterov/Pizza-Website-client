@@ -12,6 +12,7 @@ import preloadPizzaImage from '../assets/preloadPizza.svg'
 import SortingBar from '../components/sortingBar'
 import PaginationBar from '../components/paginationBar'
 import ProductCard from '../components/product/productCard'
+import { useMemo } from 'react'
 const ProductPage = ({ type }) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [sortingProps, setSortingProps] = useState({
@@ -22,11 +23,14 @@ const ProductPage = ({ type }) => {
   const isLoadingProducts = useSelector(getProductsLoadingState({ type }))
   const products = useSelector(getAllProducts({ type }))
   const dispatch = useDispatch()
-  const sortCases = [
-    { title: 'цене', value: 'price' },
-    { title: 'алфавиту', value: 'alphabet' },
-    { title: 'популярности', value: 'popular' },
-  ]
+  const sortCases = useMemo(
+    () => [
+      { title: 'цене', value: 'price' },
+      { title: 'алфавиту', value: 'alphabet' },
+      { title: 'популярности', value: 'popular' },
+    ],
+    []
+  )
 
   const count = useSelector(getProductsCount({ type }))
 
@@ -39,13 +43,13 @@ const ProductPage = ({ type }) => {
 
   useEffect(() => {
     dispatch(uploadProducts({ currentPage, limit, sortingProps, type }))
-  }, [currentPage, sortingProps])
+  }, [currentPage, sortingProps, type])
 
   useEffect(() => {
     setCurrentPage(1)
   }, [sortingProps])
 
-  const sortedProducts = Object.assign([], products)
+  const sortedProducts = useMemo(() => Object.assign([], products), [products])
 
   return (
     <>

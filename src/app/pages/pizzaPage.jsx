@@ -17,8 +17,9 @@ import {
   PIZZA_SPICY,
   PIZZA_VEGAN,
 } from '../utils/consts'
-import SortingBar from '../components/sortingBar'
 import PaginationBar from '../components/paginationBar'
+import PizzaFilter from '../components/pizza/pizzaFilter'
+import { useMemo } from 'react'
 const PizzaPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [pizzaFeature, setPizzaFeature] = useState(null)
@@ -31,20 +32,26 @@ const PizzaPage = () => {
   const pizza = useSelector(getAllPizza())
   const dispatch = useDispatch()
 
-  const filterCases = [
-    { title: 'Все', value: null },
-    { title: 'Мясные', value: PIZZA_MEAT },
-    { title: 'Вегетарианские', value: PIZZA_VEGAN },
-    { title: 'Гриль', value: PIZZA_GRILL },
-    { title: 'Острые', value: PIZZA_SPICY },
-    { title: 'Закрытые', value: PIZZA_CLOSED },
-  ]
+  const filterCases = useMemo(
+    () => [
+      { title: 'Все', value: null },
+      { title: 'Мясные', value: PIZZA_MEAT },
+      { title: 'Вегетарианские', value: PIZZA_VEGAN },
+      { title: 'Гриль', value: PIZZA_GRILL },
+      { title: 'Острые', value: PIZZA_SPICY },
+      { title: 'Закрытые', value: PIZZA_CLOSED },
+    ],
+    []
+  )
 
-  const sortCases = [
-    { title: 'цене', value: 'price' },
-    { title: 'алфавиту', value: 'alphabet' },
-    { title: 'популярности', value: 'popular' },
-  ]
+  const sortCases = useMemo(
+    () => [
+      { title: 'цене', value: 'price' },
+      { title: 'алфавиту', value: 'alphabet' },
+      { title: 'популярности', value: 'popular' },
+    ],
+    []
+  )
 
   const count = useSelector(getPizzaCount())
   const limit = 4
@@ -60,46 +67,17 @@ const PizzaPage = () => {
     setCurrentPage(1)
   }, [pizzaFeature, sortingProps])
 
-  const sortedPizza = Object.assign([], pizza)
-
-  const PizzaFilter = ({ onChangepizzaFeature, pizzaFeature }) => {
-    return (
-      <div className='container mt-4'>
-        <div className='row d-flex justify-content-between'>
-          <div className='product-features d-flex justify-content-around flex-row w-auto'>
-            {filterCases.map(item => {
-              return (
-                <div
-                  className={
-                    item.value === pizzaFeature
-                      ? 'pizza__filter_item active'
-                      : 'pizza__filter_item'
-                  }
-                  key={item.value}
-                  onClick={() => onChangepizzaFeature(item.value)}
-                >
-                  {item.title}
-                </div>
-              )
-            })}
-          </div>
-          <div className='d-flex align-items-center w-auto'>
-            <SortingBar
-              selected={sortingProps}
-              setSortingProps={setSortingProps}
-              sortCases={sortCases}
-            />
-          </div>
-        </div>
-      </div>
-    )
-  }
+  const sortedPizza = useMemo(() => Object.assign([], pizza), [pizza])
 
   return (
     <>
       <PizzaFilter
         onChangepizzaFeature={setPizzaFeature}
         pizzaFeature={pizzaFeature}
+        filterCases={filterCases}
+        sortingProps={sortingProps}
+        sortCases={sortCases}
+        setSortingProps={setSortingProps}
       />
       <div className='container mt-4'>
         <div className='my-4'>

@@ -18,6 +18,9 @@
   .page__container {
     margin-bottom: 30px;
   }
+  .intro-card .card-img-top {
+    height: 250px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -53,9 +56,10 @@
   .pizza_card .card-title {
     font-size: 14px !important;
   }
-  .product__btn_add {
-    font-size: 10px !important;
-    padding: 0.15rem 0.45rem !important;
+  .admin__page .product__btn_add {
+    font-size: 14px !important;
+    font-weight: bold;
+    padding: 8px 16px !important;
   }
   .pizza__card_price {
     font-size: 1rem !important;
@@ -96,7 +100,7 @@
   h2 {
     font-size: 18px !important;
   }
-  .arrow-up svg {
+  .arrow svg {
     width: 8px;
     height: 5px;
   }
@@ -126,4 +130,13 @@
   }
 }
 @media (max-width: 780px) {
+  .intro-card {
+    max-width: 300px;
+  }
+}
+@media (max-width: 780px) {
+  .login_bar {
+    display: flex;
+    flex-direction: column;
+  }
 }

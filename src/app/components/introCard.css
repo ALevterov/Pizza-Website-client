@@ -1,6 +1,7 @@
 .intro-card .card-body {
   background-color: #3c3c3c7e;
   width: 100%;
+  margin-bottom: -2px;
 }
 .intro-card.card:hover {
   cursor: pointer;
@@ -12,7 +13,4 @@
 .intro-card .card-body .card-text {
   color: #fff;
   opacity: 1;
-}
-.intro-card .card-img-top {
-  height: 250px;
 }

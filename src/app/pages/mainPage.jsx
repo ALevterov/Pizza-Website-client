@@ -1,6 +1,5 @@
 import Slider from '../components/slider/Slider'
 import image from '../assets/preloadPizza.svg'
-import preloadPizzaImage from '../assets/preloadPizza.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   getAllStocks,
@@ -8,7 +7,6 @@ import {
   uploadStocks,
 } from '../store/stock'
 import './mainPage.css'
-import SliderCard from '../components/slider/SliderCard'
 import { useEffect } from 'react'
 import IntroductionCard from '../components/introductionCard'
 import {
@@ -17,19 +15,20 @@ import {
   uploadIntroCards,
 } from '../store/introCard'
 import { bufferToImage } from '../utils/bufferToImage'
+import { useMemo } from 'react'
 
 const MainPage = () => {
-  const dispath = useDispatch()
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispath(uploadStocks())
-    dispath(uploadIntroCards())
+    dispatch(uploadStocks())
+    dispatch(uploadIntroCards())
   }, [])
 
   const stocks = useSelector(getAllStocks())
   const isLoading = useSelector(getStocksLoadingState())
   const introCards = useSelector(getAllIntroCards())
   const introCardsIsLoading = useSelector(getIntroCardsLoadingState())
-  const to = ['/pizza', '/drinks', '/desserts']
+  const to = useMemo(() => ['/pizza', '/drinks', '/desserts'], [])
   return (
     <div className='main-page__wrapper'>
       {!isLoading ? (

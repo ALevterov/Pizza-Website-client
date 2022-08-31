@@ -7,7 +7,7 @@ import { clearUser, getUserAuthState, getUserRole } from '../../../store/user'
 import MobileNavbar from './mobileNavbar'
 const Navbar = ({ setActive }) => {
   const isMobile = window.screen.width < 780
-  console.log(window.screen.width)
+
   const totalProductsCount = useSelector(getAllBasketProductsCount())
   const totalPrice = useSelector(getTotalPrice())
   const navbarRef = useRef(null)

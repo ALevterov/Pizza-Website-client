@@ -15,8 +15,15 @@ const MobileNavbar = ({
 }) => {
   const [menuActive, setMenuActive] = useState(false)
   const toggleMenu = () => {
-    console.log('hello')
     setMenuActive(prev => !prev)
+  }
+  const linkClickHandler = page => {
+    setActivePage(page)
+    setMenuActive(false)
+  }
+  const logOutHandler = () => {
+    logOut()
+    setMenuActive(false)
   }
   return (
     <div className='container mobile-container'>
@@ -26,7 +33,7 @@ const MobileNavbar = ({
           <NavLink
             className='navbar__brand-link'
             to='/'
-            onClick={() => setActivePage('main')}
+            onClick={() => linkClickHandler('main')}
           >
             Супер пицца
           </NavLink>
@@ -68,7 +75,7 @@ const MobileNavbar = ({
                   activePage === 'main' ? 'active' : ''
                 }`}
                 to='/'
-                onClick={() => setActivePage('main')}
+                onClick={() => linkClickHandler('main')}
               >
                 Главная
               </NavLink>
@@ -79,7 +86,7 @@ const MobileNavbar = ({
                   activePage === 'pizza' ? 'active' : ''
                 }`}
                 to='/pizza'
-                onClick={() => setActivePage('pizza')}
+                onClick={() => linkClickHandler('pizza')}
               >
                 Пицца
               </NavLink>
@@ -90,7 +97,7 @@ const MobileNavbar = ({
                   activePage === 'drinks' ? 'active' : ''
                 }`}
                 to='/drinks'
-                onClick={() => setActivePage('drinks')}
+                onClick={() => linkClickHandler('drinks')}
               >
                 Напитки
               </NavLink>
@@ -101,7 +108,7 @@ const MobileNavbar = ({
                   activePage === 'desserts' ? 'active' : ''
                 }`}
                 to='/desserts'
-                onClick={() => setActivePage('desserts')}
+                onClick={() => linkClickHandler('desserts')}
               >
                 Десерты
               </NavLink>
@@ -111,13 +118,17 @@ const MobileNavbar = ({
             {isAuth ? (
               role === 'ADMIN' ? (
                 <>
-                  <NavLink className='navbar__sign-in_btn' to={'/admin'}>
+                  <NavLink
+                    className='navbar__sign-in_btn'
+                    onClick={() => setMenuActive(false)}
+                    to={'/admin'}
+                  >
                     Админ панель
                   </NavLink>{' '}
                   |{' '}
                   <button
                     className='navbar__sign-in_btn'
-                    onClick={() => logOut()}
+                    onClick={() => logOutHandler()}
                   >
                     Выйти
                   </button>
@@ -126,14 +137,18 @@ const MobileNavbar = ({
                 <>
                   <button
                     className='navbar__sign-in_btn'
-                    onClick={() => logOut()}
+                    onClick={() => logOutHandler()}
                   >
                     Выйти
                   </button>
                 </>
               )
             ) : (
-              <NavLink className='navbar__sign-in_btn' to={'/login'}>
+              <NavLink
+                className='navbar__sign-in_btn'
+                onClick={() => setMenuActive(false)}
+                to={'/login'}
+              >
                 Войти
               </NavLink>
             )}

@@ -6,7 +6,6 @@ const initialState = {
     products: {},
   },
 }
-const appendPizza = ({ payload, products }) => {}
 const busketSlice = createSlice({
   name: 'busket',
   initialState,

@@ -33,7 +33,7 @@ const EditItemPage = ({ type }) => {
     const { name, value } = target
     const size = name.split('_')[0]
     const selector = name.split('_')[1]
-    console.log(size, selector)
+
     if (type === PRODUCT_PIZZA) {
       if (name === 'features') {
         return setItem(prevState => ({
@@ -99,7 +99,7 @@ const EditItemPage = ({ type }) => {
       console.log(error)
     }
   }
-  console.log(item)
+
   return (
     <div className='d-flex justify-content-center align-items-center h-100'>
       <div
